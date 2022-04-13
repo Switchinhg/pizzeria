@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Roboto:wght@100;300;400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+header{
+    background-color: rgb(215, 70, 53);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+body{
+    padding-top: 64px;
+}
+
+.navbar-wrap{
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+
+}
+.navbar-wrap i{
+    font-size: 1.5rem;
+}
+.navbar-menulogo{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    
+}
+
+.navbar-logo h1{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.header-navbar-content{
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    background-color: rgb(215, 70, 53);
+    overflow: hidden;
+    left: -250px;
+    width: 250px; /*para despues ponerle la animacion*/  
+    transition: 0.5s;/* para despues ponerle la animacion */
+}
+header{
+    transition: 0.5s; /* para despues */
+}
+
+.requete-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.imgrequete{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+}
+.imgrequete:hover{
+    filter: opacity(0.7);
+}
+.sidebar-texto{
+    padding-top: 1rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.sidebar-img img{
+    border-radius: 50%;
+    width: 8rem;
+}
+
+.sidebar-links{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.sidebar-items-flex{
+    display: flex;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+
+.tituloyX{
+    display: flex;
+align-items: center;
+justify-content: space-between;
+margin: 0 1rem;    
+
+}
+.x i,.hamburger{
+    color: white;
+}
+.x i:hover, .hamburger:hover{
+    color:black
+}
+
+
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active{
+    display: flex !important;
+}
+
+
+.ci{
+    height: 375px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.menutitulo p{
+    text-transform: uppercase;
+
+
+}
+
+.productos-wrap{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    margin: 0 15rem;
+}
+
+.productos{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-content: center;
+    max-width: 1000px;
+    margin :0 auto;
+}
+
+.producto{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    gap: 5rem;
+    border-top: 1px solid gray;
+    padding: 1rem 0;
+
+    
+}
+.producto .info{
+    flex-grow: 1;
+    min-width: 205px;
+
+}

@@ -185,16 +185,14 @@ margin: 0 1rem;
 }
 
 .sec_carrito{
-    margin-top: 70px;
-    padding-top: 25rem;
+    margin-top: 5rem;
     padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     overflow: scroll;
     overflow-x: hidden;
-    height: calc( 84vh - 20px );
+    height: calc( 100vh - 130px );
 }
 .top{
     position: absolute !important;

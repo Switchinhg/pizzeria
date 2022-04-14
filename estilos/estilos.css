@@ -21,6 +21,7 @@ body{
 .navbar-wrap{
     padding: 0.5rem;
     display: flex;
+    background-color: rgb(215, 70, 53);
     justify-content: space-between;
     align-items: center;
     color: white;
@@ -159,4 +160,109 @@ margin: 0 1rem;
     flex-grow: 1;
     min-width: 205px;
 
+}
+
+.sec_sidebarCarrito{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    max-width: 100%;
+    background-color: #f8f8f8;
+    position:fixed;
+    top: 0;
+    z-index: 5;
+   /*  display: none; PARA CUANDO TERMINE */
+    
+}
+/* body{
+    overflow: hidden;
+} PARA CUANDO HAGA EL OVERLAY */
+.sec_carrito_fixed{
+
+
+
+}
+
+.sec_carrito{
+    margin-top: 70px;
+    padding-top: 25rem;
+    padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: calc( 84vh - 20px );
+}
+.top{
+    position: absolute !important;
+    top: 0;
+    width: 100%;
+}
+
+.producto_carrito{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 1000px;
+    background-color: white;
+    padding: 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 1px 2px gray;
+}
+.producto_borrar {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    display: grid;
+    place-items: center;
+    
+}
+.producto_borrar i{
+    color: black;
+}
+.producto_borrar i:hover{
+    color: tomato;
+}
+
+.carrito_img{
+    flex-grow: 1;
+}
+.carrito-pedido-gustos-precio{
+    display: flex;
+    flex-direction: column;
+}
+.carrito-pedidogusto,.carrito_precio{
+    text-align: end;
+}
+.carrito-pedidogusto{
+    line-height: 5px;
+}
+.gustos{
+font-size: 0.8rem;
+}
+
+.botoncomprar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+
+}
+.boton{
+    padding: 0.5rem 20rem;
+    border-radius: 10px;
+    box-shadow: 1px  5px #999;
+    background-color: rgb(215, 70, 53);
+    color: white;
+    outline: none;
+    order: none;
+}
+.boton:active{
+    box-shadow: 0 2px #666;
+    transform: translateY(4px);
+    outline: none;
+    border: none;
 }

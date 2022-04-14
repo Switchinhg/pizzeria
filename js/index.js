@@ -41,7 +41,6 @@
                             <div class="precio">
                                 <p>$${comida.precio}</p>
                             </div>
-                        
                     `
 
                     console.log("entre pero no hice nada se ve xd")

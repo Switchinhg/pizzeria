@@ -21,11 +21,17 @@ body{
 .navbar-wrap{
     padding: 0.5rem;
     display: flex;
+    gap: 0.6rem;
     background-color: rgb(215, 70, 53);
     justify-content: space-between;
     align-items: center;
     color: white;
 
+}
+.navbar-carrito{
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
 }
 .navbar-wrap i{
     font-size: 1.5rem;
@@ -172,16 +178,42 @@ margin: 0 1rem;
     position:fixed;
     top: 0;
     z-index: 5;
+    display:none;
    /*  display: none; PARA CUANDO TERMINE */
     
 }
 /* body{
     overflow: hidden;
 } PARA CUANDO HAGA EL OVERLAY */
-.sec_carrito_fixed{
 
+.carritologo{
+    display: flex;
+    gap: 1rem;
+}
+.pedidoslogo{
+    display: flex;
+    gap: 1rem;
+}
+.favoritoslogo{
+    display: flex;
+    gap: 1rem;
+}
+.cuentalogo{
+    display: flex;
+    gap: 1rem;
+}
+.nosotroslogo{
+    display: flex;
+    gap: 1rem;
+}
 
-
+.requete-wrap a{
+    color: white;
+    text-decoration: none;
+}
+.requete-wrap a:hover{
+    color: black;
+    text-decoration: none;
 }
 
 .sec_carrito{

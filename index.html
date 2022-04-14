@@ -50,119 +50,125 @@
                                     <div class="carrito sidebar-items-flex">
                                         <a href="javascript:void(0)" onclick="abrircarrito()">
                                             <div class="carritologo">
+
                                                 <i class="fa-solid fa-cart-shopping"></i>
-                                            </div>
-                                            <div class="carrito-texto">
+
                                                 <p>Carrito</p>
+
                                             </div>
                                         </a>
                                     </div><!-- Continuar -->
                                     <div class="pedidosAnteriores sidebar-items-flex">
-                                        <div class="pedidoslogo">
-                                            <i class="fa-solid fa-utensils"></i>
-                                        </div>
-                                        <div class="pedidos-texto">
-                                            <p>Pedidos Anteriores</p>
-                                        </div>
-                                    </div><!-- Continuar -->
+                                        <a href="javascript:void(0)" onclick="pedidosAnteriores()">
+                                            <div class="pedidoslogo">
+                                                <i class="fa-solid fa-utensils"></i>
+
+                                                <p>Pedidos Anteriores</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <!-- Continuar -->
                                     <div class="favoritos sidebar-items-flex">
-                                        <div class="favoritoslogo">
-                                            <i class="fa-solid fa-heart"></i>
-                                        </div>
-                                        <div class="favoritos-texto">
-                                            <p>Favoritos</p>
-                                        </div>
-                                    </div><!-- Continuar -->
-                                    <div class="miCuenta sidebar-items-flex">
+                                        <a href="javascript:void(0)" onclick="favoritos()">
+                                            <div class="favoritoslogo">
+                                                <i class="fa-solid fa-heart"></i>
+
+                                                <p>Favoritos</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div><!-- Continuar -->
+                                <div class="miCuenta sidebar-items-flex">
+                                    <a href="javascript:void(0)" onclick="miCuenta()">
                                         <div class="cuentalogo">
                                             <i class="fa-solid fa-user"></i>
-                                        </div>
-                                        <div class="cuenta-texto">
+
                                             <p>Mi Cuenta</p>
                                         </div>
-                                    </div><!-- Continuar -->
-                                    <div class="sobreNosotros sidebar-items-flex">
+                                    </a>
+                                </div>
+                                <!-- Continuar -->
+                                <div class="sobreNosotros sidebar-items-flex">
+                                    <a href="javascript:void(0)" onclick="nosotros()">
                                         <div class="nosotroslogo">
                                             <i class="fa-solid fa-circle-info"></i>
-                                        </div>
-                                        <div class="nosotros-texto">
+
                                             <p>Sobre Nosotros</p>
                                         </div>
-                                    </div><!-- Continuar -->
-
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <a class="hamburger" href="javascript:void(0)" onclick="abrirSidebar()">
-
-                            <i class="fa-solid fa-bars"></i>
-                        </a>
                     </div>
-                    <div class="navbar-logo">
+                </div><!-- Continuar -->
 
-                        <h1>RequetePizza</h1>
-
-                    </div>
-
+                <a class="hamburger" href="javascript:void(0)" onclick="abrirSidebar()">
+            
+                    <i class="fa-solid fa-bars"></i>
+                </a>
+                <div class="navbar-logo">
+            
+                    <h1>RequetePizza</h1>
+            
                 </div>
-
                 <div class="navbar-carrito">
                     <i class="fa-solid fa-cart-shopping"></i>
                 </div>
             </div>
-        </header>
+    </div>
+    </header>
 
-        <section>
-            <div class="body-carousel-area">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner ">
-                        <div class="carousel-item ci active ">
-                            <img src="./img/baner.png" class="d-block " alt="...">
-                        </div>
-                        <div class="carousel-item  ci">
-                            <img src="./img/banner2.png" class="d-block " alt="...">
-                        </div>
-
+    <section>
+        <div class="body-carousel-area">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner ">
+                    <div class="carousel-item ci active ">
+                        <img src="./img/baner.png" class="d-block " alt="...">
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+                    <div class="carousel-item  ci">
+                        <img src="./img/banner2.png" class="d-block " alt="...">
+                    </div>
+
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+
+    </section>
+
+    <section id="sec_sidebarLinks" class="sec_sidebarLinks">
+
+        <div class="sec_sidebarCarrito">
+
+            <div class="navbar-wrap top">
+                <div class="navbar-menulogo">
+
+                    <div class="navbar-menu">
+                        <a class="hamburger" href="javascript:void(0)" onclick="SacarSecCarrito()">
+
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-logo">
+                        <h1>Carrito</h1>
+                    </div>
                 </div>
             </div>
 
-        </section>
-
-        <section id="sec_sidebarLinks" class="sec_sidebarLinks">
-
-            <div class="sec_sidebarCarrito">
-
-                <div class="navbar-wrap top">
-                    <div class="navbar-menulogo">
-
-                        <div class="navbar-menu">
-                            <a class="hamburger" href="javascript:void(0)" onclick="SacarSecCarrito()">
-
-                                <i class="fa-solid fa-arrow-left"></i>
-                            </a>
-                        </div>
-                        <div class="navbar-logo">
-                            <h1>Carrito</h1>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sec_carrito_fixed">
-                    <div class="sec_carrito">
+            <div class="sec_carrito_fixed">
+                <div class="sec_carrito">
 
 
-                        <!--<div class="producto_carrito"> 
+                    <!--<div class="producto_carrito"> 
                             <div class="producto_borrar">
                                 <a href="javascript:void(0)" onclick="sacarProducto()">
                                     <i class="fa-solid fa-xmark"></i>
@@ -183,52 +189,52 @@
                                 </div>
                             </div>
                         </div> -->
-                        <!-- Empieza Producto -->
-                        <div class="producto_carrito"> 
-                            <div class="producto_borrar">
-                                <a href="javascript:void(0)" onclick="sacarProducto()">
-                                    <i class="fa-solid fa-xmark"></i>
-                                </a>
-                            </div>
-                            <div class="carrito_img">
-                                <img src="./img/faina.png" alt="">
-                            </div>
-                            <div class="carrito-pedido-gustos-precio">
-                                <div class="carrito-pedidogusto">
+                    <!-- Empieza Producto -->
+                    <div class="producto_carrito">
+                        <div class="producto_borrar">
+                            <a href="javascript:void(0)" onclick="sacarProducto()">
+                                <i class="fa-solid fa-xmark"></i>
+                            </a>
+                        </div>
+                        <div class="carrito_img">
+                            <img src="./img/faina.png" alt="">
+                        </div>
+                        <div class="carrito-pedido-gustos-precio">
+                            <div class="carrito-pedidogusto">
 
-                                    <p><b> Pedido (ej: 1 Pizza)</b></p>
-                                    <p class="gustos">gustos (Ej: albaca, oregano etc)</p>
-                                </div>
-                                <div class="carrito_precio">
+                                <p><b> Pedido (ej: 1 Pizza)</b></p>
+                                <p class="gustos">gustos (Ej: albaca, oregano etc)</p>
+                            </div>
+                            <div class="carrito_precio">
 
-                                    <p>precio</p>
-                                </div>
+                                <p>precio</p>
                             </div>
                         </div>
-                        <!-- Termina Prodcud -->
-
-
-                        
-
                     </div>
-                </div>
-                <div class="botoncomprar">
-                    <button class="boton">Comprar</button>
-                </div>
+                    <!-- Termina Prodcud -->
 
+
+
+
+                </div>
             </div>
-        </section>
+            <div class="botoncomprar">
+                <button class="boton">Comprar</button>
+            </div>
+
+        </div>
+    </section>
 
 
-        <section>
-            <div class="productos-wrap">
+    <section>
+        <div class="productos-wrap">
 
-                <div class="productos">
-                    <div class="menutitulo">
-                        <p>Pizzeria</p>
-                    </div>
+            <div class="productos">
+                <div class="menutitulo">
+                    <p>Pizzeria</p>
+                </div>
 
-                    <!--  <div class="producto"> Inicio Producto 
+                <!--  <div class="producto"> Inicio Producto 
 
                         <div class="prodImg">
                             <img src="./img/muzzarella.png" alt="">
@@ -243,32 +249,33 @@
                     </div> Fin Producto -->
 
 
-                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <script>
-            function abrirSidebar() {
-                document.getElementById("header-sidebar").style.left = "0"
+    <script>
+        function abrirSidebar() {
+            document.getElementById("header-sidebar").style.left = "0"
 
-            }
+        }
 
-            function cerrarSidebar() {
-                document.getElementById("header-sidebar").style.left = "-250px"
-            }
+        function cerrarSidebar() {
+            document.getElementById("header-sidebar").style.left = "-250px"
+        }
 
-            function SacarSecCarrito() {
-                document.getElementById("sec_sidebarLinks").style.display = "none"
-                document.getElementById("body").style.overflow = "auto"
-            }
+        function SacarSecCarrito() {
+            document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "none"
+            document.getElementById("body").style.overflow = "auto"
+        }
 
-            function abrircarrito() {
-                document.getElementById("sec_sidebarLinks").style.display = "block"
-                document.getElementById("body").style.overflow = "hidden"
-                document.getElementById("header-sidebar").style.left = "-250px"
-            }
-        </script>
-        <script src="./js/index.js"></script>
+        function abrircarrito() {
+
+            document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "block"
+            document.getElementById("body").style.overflow = "hidden"
+            document.getElementById("header-sidebar").style.left = "-250px"
+        }
+    </script>
+    <script src="./js/index.js"></script>
 
 </body>
 

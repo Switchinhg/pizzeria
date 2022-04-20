@@ -103,13 +103,13 @@
                 </div><!-- Continuar -->
 
                 <a class="hamburger" href="javascript:void(0)" onclick="abrirSidebar()">
-            
+
                     <i class="fa-solid fa-bars"></i>
                 </a>
                 <div class="navbar-logo">
-            
+
                     <h1>RequetePizza</h1>
-            
+
                 </div>
                 <div class="navbar-carrito">
                     <i class="fa-solid fa-cart-shopping"></i>
@@ -231,26 +231,75 @@
                     <p>Pizzeria</p>
                 </div>
 
-                <!--  <div class="producto"> Inicio Producto 
+                 <!-- <div class="producto"> 
 
                         <div class="prodImg">
                             <img src="./img/muzzarella.png" alt="">
                         </div>
                         <div class="info">
-                            <p>Muzzarella</p>
+                            <p id="asd">Muzzarella</p>
                             <p>Porción de pizza con salsa de tomate, cubierta con ezquisita muzzarella</p>
                         </div>
                         <div class="precio">
                             <p>$170</p>
                         </div>
-                    </div> Fin Producto -->
-
+                    </div> 
+ -->
 
             </div>
         </div>
     </section>
 
+    <section class="pedido-wrap">
+        <div class="navbar-wrap top">
+                <div class="navbar-menulogo">
+
+                    <div class="navbar-menu">
+                        <a class="hamburger" href="javascript:void(0)" onclick="salirCompra()">
+
+                            <i class="fa-solid fa-arrow-left"></i>
+                        </a>
+                    </div>
+                    <div class="navbar-logo">
+                        <h1 id="productoname">Pizza</h1>
+                    </div>
+                </div>
+            </div>
+        <div class="productoinfo">
+            <div class="imgprod" >
+                <img id="imgproducto" src="./img/placeholder.png" alt="imgpizza">
+            </div>
+            <div class="infoproducto">
+                <div class="nombreprodyprecio">
+                    <p id="nombreProducto">Nombre</p>
+                    <p id="precioProducto">precio</p>
+                </div>
+                <p id="detalleprod">INfo</p>
+            </div>
+            <div class="botonesCuantos">
+                <button class="botonchico"> --</button>
+                <p id="cantidadcompra">1</p>
+                <button class="botonchico">+</button>
+            </div>
+        </div>
+        <div class="botoncomprar botoncomprarchico">
+            <button id="btnagregar" class="boton ">Agregar</button>
+        </div>
+    </section>
+
     <script>
+        function abrirCompra(){
+            document.getElementsByClassName("pedido-wrap")[0].style.display = "flex"
+            document.getElementById("body").style.overflow = "hidden"
+            document.getElementById("header-sidebar").style.left = "-250px"
+        }
+        function salirCompra(){
+            document.getElementsByClassName("pedido-wrap")[0].style.display = "none"
+            document.getElementById("body").style.overflow = "auto"
+            document.getElementById("imgproducto").src= "./img/placeholder.png"
+            suma =1
+            cantidadcompra.innerHTML = suma
+        }
         function abrirSidebar() {
             document.getElementById("header-sidebar").style.left = "0"
 

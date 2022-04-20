@@ -297,3 +297,73 @@ font-size: 0.8rem;
     border: none;
 }
 
+.pedido-wrap{
+    display: none;
+    flex-direction: column;
+    height: 100vh;
+    width: 100vw;
+    background-color: #f8f8f8;
+    position:fixed;
+    top: 0;
+    z-index: 5;
+}
+
+.productoinfo{
+    padding: 5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 500px;
+    margin: 0 auto; 
+    gap: 2rem;
+}
+.botonesCuantos{
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;  
+}
+.botonesCuantos p{
+    position: relative;
+    top: 10px;
+}
+.infoproducto{
+    display: flex;
+    flex-direction: column;
+}
+.nombreprodyprecio{
+    display:flex;
+    gap: 30rem;
+}
+#nombreProducto{
+    width: 200px;
+    font-weight: bold;
+}
+#precioProducto{
+    color: rgb(7, 167, 7);
+    font-size: 1.5rem;
+}
+#imgproducto{
+    width: 300px;
+}
+.botonchico{
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
+    background-color: rgb(215, 70, 53);
+    color: white;
+    outline: none;
+    order: none;
+    
+}
+.botoncomprarchico{
+    height: 56px;
+}
+.botonchico:active{
+    background-color: white;
+    color: black;
+}
+
+.carrito_precio p{
+    color: tomato;
+}

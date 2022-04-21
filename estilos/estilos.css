@@ -28,11 +28,36 @@ body{
     color: white;
 
 }
+.loadcarrito{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
 .navbar-carrito{
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
+    padding-right: 1rem;
 }
+.navbar-carrito i{
+    color: white;
+}
+.navbar-carrito i:hover{
+    color:black
+}
+.navbar-carrito p{
+    color:white;
+    background-color: #e4b142;
+    width: 25px;
+    height: 20px;
+    position: relative;
+    left: -10px;
+    padding-left: 15%;
+    padding-bottom: 22px;
+    border-radius: 50%;
+    
+}
+
 .navbar-wrap i{
     font-size: 1.5rem;
 }
@@ -158,9 +183,11 @@ margin: 0 1rem;
     align-content: center;
     gap: 5rem;
     border-top: 1px solid gray;
-    padding: 1rem 0;
-
-    
+    padding: 1rem 0.5rem;
+ 
+}
+.producto:hover{
+    background-color: rgb(235, 235, 235);
 }
 .producto .info{
     flex-grow: 1;
@@ -276,10 +303,13 @@ font-size: 0.8rem;
 
 .botoncomprar{
     display: flex;
+    gap: 1rem;
     justify-content: center;
     align-items: center;
     height: 40px;
-
+}
+.botoncomprar p{
+    font-size: 1.5rem;
 }
 .boton{
     padding: 0.5rem 20rem;

@@ -48,7 +48,7 @@
 
                                 <div class="sidebar-links">
                                     <div class="carrito sidebar-items-flex">
-                                        <a href="javascript:void(0)" onclick="abrircarrito()">
+                                        <a class="loadcarrito" href="javascript:void(0)" onclick="abrircarrito()">
                                             <div class="carritologo">
 
                                                 <i class="fa-solid fa-cart-shopping"></i>
@@ -112,7 +112,10 @@
 
                 </div>
                 <div class="navbar-carrito">
-                    <i class="fa-solid fa-cart-shopping"></i>
+                    <a class="loadcarrito" href="javascript:void(0)" onclick="abrircarrito()">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <p id="carrito-items">0</p>
+                    </a>
                 </div>
             </div>
     </div>
@@ -153,7 +156,7 @@
                 <div class="navbar-menulogo">
 
                     <div class="navbar-menu">
-                        <a class="hamburger" href="javascript:void(0)" onclick="SacarSecCarrito()">
+                        <a id="salircarrito"  class="hamburger" href="javascript:void(0)" onclick="SacarSecCarrito()">
 
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
@@ -189,34 +192,13 @@
                                 </div>
                             </div>
                         </div> -->
-                    <!-- Empieza Producto -->
-                    <div class="producto_carrito">
-                        <div class="producto_borrar">
-                            <a href="javascript:void(0)" onclick="sacarProducto()">
-                                <i class="fa-solid fa-xmark"></i>
-                            </a>
-                        </div>
-                        <div class="carrito_img">
-                            <img src="./img/faina.png" alt="">
-                        </div>
-                        <div class="carrito-pedido-gustos-precio">
-                            <div class="carrito-pedidogusto">
 
-                                <p><b> Pedido (ej: 1 Pizza)</b></p>
-                                <p class="gustos">gustos (Ej: albaca, oregano etc)</p>
-                            </div>
-                            <div class="carrito_precio">
-
-                                <p>precio</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Termina Prodcud -->
 
                 </div>
             </div>
             <div class="botoncomprar">
                 <button class="boton">Comprar</button>
+                <p id="carritoTotal">Total: </p>
             </div>
 
         </div>
@@ -231,7 +213,7 @@
                     <p>Pizzeria</p>
                 </div>
 
-                 <!-- <div class="producto"> 
+                <!-- <div class="producto"> 
 
                         <div class="prodImg">
                             <img src="./img/muzzarella.png" alt="">

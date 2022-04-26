@@ -198,7 +198,7 @@
             </div>
             <div class="botoncomprar">
                 <button class="boton">Comprar</button>
-                <p id="carritoTotal">Total: </p>
+                <p id="carritoTotal">Total: $<span id="precioTotal">0</span> </p>
             </div>
 
         </div>
@@ -269,41 +269,10 @@
         </div>
     </section>
 
-    <script>
-        function abrirCompra(){
-            document.getElementsByClassName("pedido-wrap")[0].style.display = "flex"
-            document.getElementById("body").style.overflow = "hidden"
-            document.getElementById("header-sidebar").style.left = "-250px"
-        }
-        function salirCompra(){
-            document.getElementsByClassName("pedido-wrap")[0].style.display = "none"
-            document.getElementById("body").style.overflow = "auto"
-            document.getElementById("imgproducto").src= "./img/placeholder.png"
-            suma =1
-            cantidadcompra.innerHTML = suma
-        }
-        function abrirSidebar() {
-            document.getElementById("header-sidebar").style.left = "0"
 
-        }
-
-        function cerrarSidebar() {
-            document.getElementById("header-sidebar").style.left = "-250px"
-        }
-
-        function SacarSecCarrito() {
-            document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "none"
-            document.getElementById("body").style.overflow = "auto"
-        }
-
-        function abrircarrito() {
-
-            document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "block"
-            document.getElementById("body").style.overflow = "hidden"
-            document.getElementById("header-sidebar").style.left = "-250px"
-        }
-    </script>
+    <script src="./js/comidas.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/menus.js"></script>
 
 </body>
 

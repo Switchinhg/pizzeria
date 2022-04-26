@@ -7,6 +7,7 @@ class productos {
             this.img = img
     }
 
+
 }
 class carritos {
     constructor(id, nombrecomida, precio, descripcion, img, gustos, cantidad) {
@@ -19,253 +20,199 @@ class carritos {
             this.cantidad = cantidad
     }
 
-
-
 }
-const carrito = [ /* comidas a pedir */ ]
-const comidas = [{
-        id: 1,
-        nombrecomida: "Muzzarella",
-        precio: 170,
-        descripcion: "Porción de pizza con salsa de tomate, cubierta con ezquisita muzzarella",
-        img: "./img/muzzarella.png",
-        imgg: "./img/muzzarellaGrande.png"
-    },
-    {
-        id: 2,
-        nombrecomida: "Muzzarella a caballo",
-        precio: 265,
-        descripcion: "Porción de muzzarella + Porción de fainá 'a caballo'",
-        img: "./img/musarellaCaballo.png",
-        imgg: "./img/musarellaCaballoGrande.png"
-    },
-    {
-        id: 3,
-        nombrecomida: "Fugazzeta",
-        precio: 170,
-        descripcion: "Porción de pizza con cebolla picada y pequeños trozos de jamón y panceta, cubierta por una capa de exquisita muzzarella",
-        img: "./img/fugazzeta.png",
-        imgg: "./img/fugazzetaGrande.png"
-    },
-    {
-        id: 4,
-        nombrecomida: "Pizza",
-        precio: 95,
-        descripcion: "Porción de pizza con salsa artesanal, elaborada con tomates seleccionados de baja acidez y buena maduración",
-        img: "./img/pizza.png",
-        imgg: "./img/pizzaGrande.png"
-    },
-    {
-        id: 5,
-        nombrecomida: "Fainá",
-        precio: 95,
-        descripcion: "Porción de fainá, hecho con harina de garbanzo, horneado en una exclusiva bandeja de cobre",
-        img: "./img/faina.png",
-        imgg: "./img/fainaGrande.png"
-    },
-    {
-        id: 6,
-        nombrecomida: "Fainá con muzzarella",
-        precio: 170,
-        descripcion: "Porción de fainá con una exquisita capa de muzzarella",
-        img: "./img/fainaMuzarella.png",
-        imgg: "./img/fainaMuzzarellaGrande.png"
-    },
-]
 
-
-/*  comidas.push(new productos(1,"Muzzarella", 170, "Porción de pizza con salsa de tomate, cubierta con ezquisita muzzarella", "./img/muzzarella.png")) EJEMPLO DE PUSH PORQUE VOY A AGREGAR QUE EL DUEÑO AGREGUE COMIDAS*/
+let carrito = [ /* comidas a pedir */ ]
 
 let padre = document.getElementsByClassName("productos")[0]
-for (const comida of comidas) {
+const btnagregar = document.getElementById("btnagregar")
+let contadorCarrito = document.getElementById("carrito-items")
+let carritoTotal = document.getElementById("carritoTotal")
 
 
 
 
-    let prod = document.createElement("div")
-    prod.classList.add('producto')
+/* Agrega los productos  */
+mostrarProductos(comidas);
 
-    prod.innerHTML = `
-                            
-                            <div class="prodImg">
-                                <img src="${comida.img}" alt="">
-                            </div>
-                            <div class="info">
-                                <p class="nombrecomidas">${comida.nombrecomida}</p>
-                                <p>${comida.descripcion}</p>
-                            </div>
-                            <div class="precio">
-                                <p>$${comida.precio}</p>
-                            </div>
-                            
-                    `
+function mostrarProductos(array) {
 
-    padre.appendChild(prod)
+    for (const comida of array) {
 
+        let prod = document.createElement("div")
+        prod.classList.add('producto')
+
+        prod.innerHTML = `
+                                
+                                <div class="prodImg">
+                                    <img src="${comida.img}" alt="">
+                                </div>
+                                <div class="info">
+                                    <p id="prod${comida.id}" class="nombrecomidas">${comida.comida}</p>
+                                    <p>${comida.descripcion}</p>
+                                </div>
+                                <div class="precio">
+                                    <p>$${comida.precio}</p>
+                                </div>
+                                
+                        `
+
+        padre.appendChild(prod)
+
+    }
 }
 
 
 
-/* Agarra cual comida fue seleccionada para pedirla y cambia los datos a la pantalla */
+/* Al hacer clic en un producto abre la la pantalla y carga el producto */
+
+
+
+
 
 const variProductos = document.getElementsByClassName("producto")
 
-for (const i of variProductos) {
+for (const is of variProductos) {
+        is.addEventListener("click", e =>{
+            abrirCompra()
+            
+            for (const i of comidas) {
+                const produclicked = document.getElementById(`prod${i.id}`)
+                console.log(produclicked.id)
+                if(produclicked.id === i.id){
+                    document.getElementById("productoname").innerHTML = i.comida
+                    document.getElementById("imgproducto").src = `${i.imgg}`
+                    document.getElementById("nombreProducto").innerHTML = i.comida
+                    document.getElementById("precioProducto").innerHTML = "$" + i.precio
+                    document.getElementById("detalleprod").innerHTML = i.descripcion
+
+                    btnagregar.addEventListener("click", () => {
+                        agregarCarrito(i.id)
+        
+                            //buscamos el producto en nuestra BD
+                        let productoAgregar = comidas.find((elemento) => elemento.id == i.id)
+                        let prod = comidas.find((elemento) => elemento.id == i.id)
+                        localStorage.setItem("producto", JSON.stringify(productoAgregar))
+                    }) 
+
+                }
+                
+            }
+        })
+}
+
+
+/* for (const i of variProductos) {
     i.addEventListener("click", e => {
         const ClickComida = i.getElementsByClassName("nombrecomidas")[0].innerHTML
         abrirCompra()
         const precioProducto = 0
         const infoProducto = ""
         for (const i of comidas) {
-            if (i.nombrecomida == ClickComida) {
-                document.getElementById("productoname").innerHTML = ClickComida
+
+            if (i.comida == ClickComida) {
+                document.getElementById("productoname").innerHTML = i.comida
                 document.getElementById("imgproducto").src = `${i.imgg}`
-                document.getElementById("nombreProducto").innerHTML = ClickComida
+                document.getElementById("nombreProducto").innerHTML = i.comida
                 document.getElementById("precioProducto").innerHTML = "$" + i.precio
                 document.getElementById("detalleprod").innerHTML = i.descripcion
+
+                
+                /*  Que hace? Agregar 
+                btnagregar.addEventListener("click", () => {
+                    agregarCarrito(i.id)
+    
+                        //buscamos el producto en nuestra BD
+                    let productoAgregar = comidas.find((elemento) => elemento.id == i.id)
+                    let prod = comidas.find((elemento) => elemento.id == i.id)
+                    localStorage.setItem("producto", JSON.stringify(productoAgregar))
+                }) 
+
             }
         }
+        
 
     })
-}
+} */
 
-const btnmas = document.getElementsByClassName("botonchico")[1]
-const btnmenos = document.getElementsByClassName("botonchico")[0]
-const cantidadcompra = document.getElementById("cantidadcompra")
+/* agregar el producto clickeado al carrito */
+function agregarCarrito(id) {
 
-let suma = 1
+    let esta = carrito.find((item) => item.id == id)
+    if (esta) { // se va al else con -> false, null, undefind y " " 
+        esta.cantidad = esta.cantidad + 1;
+        
+        console.log(esta.cantidad + "entre a agregar carrito")
+        /* Continuar */
+        document.getElementById(`prod${esta.id}`).innerHTML = ` <p id="prod${esta.id}"><b> ${esta.cantidad +" "+ esta.comida}</b></p>`
+        actualizarCarrito();
 
-btnmas.onclick = () => {
-    suma++
-    cantidadcompra.innerHTML = suma
-}
-btnmenos.onclick = () => {
-    if (suma != 1) {
-        suma--
-        cantidadcompra.innerHTML = suma
+    } else {
+        let prod = comidas.find((elemento) => elemento.id == id)
+        prod.cantidad = 1 //le agrego una propiedad "cantidad"
+
+        carrito.push(prod) // lo guardo en mi array
+
+        /*  actualizarCarrito() */
+        actualizarCarrito();
+        cargarcarrito(prod)
     }
+    localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-/* Cuando apreta el boton comprar lo pone en el carrito */
 
-const btnagregar = document.getElementById("btnagregar")
-btnagregar.onclick = () => {
-    const nmb = document.getElementById("productoname").innerHTML
-    localStorage.setItem(nmb, suma)
-    
+function cargarcarrito(prod) {
     const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
+    
+    let produ = document.createElement("div")
+    produ.classList.add('producto_carrito')
+    let suma = 1
+    let total = 0
+    produ.innerHTML = `
+                        <div class="producto_borrar">
+                            <a href="javascript:void(0)" onclick="sacarProducto()">
+                                <i class="fa-solid fa-xmark agarrar"></i>
+                            </a>
+                        </div>
+                        <div class="carrito_img">
+                            <img src="${prod.img}" alt="">
+                        </div>
+                        <div class="carrito-pedido-gustos-precio">
+                            <div class="carrito-pedidogusto">
 
-    for (const i of comidas) {
-        if (i.nombrecomida == nmb) {
+                                <p id="prod${prod.id}"><b> ${prod.cantidad +" "+ prod.comida}</b></p>
+                                <p class="gustos">gustos (Ej: albaca, oregano etc)</p> 
+                            </div>
+                            <div class="carrito_precio">
+
+                                <p>$${prod.precio*suma}</p>
+                            </div>
+                        </div>
+                            `
+    total += prod.precio * suma
+    prdcrrito.appendChild(produ)
+}
+
+function actualizarCarrito() {
+     //actualiza la cantidad de productos que hay en el carrito
+    contadorCarrito.innerText = carrito.reduce((acc, el) => carrito.length,0);
+    //actualiza el precio
+    document.getElementById("precioTotal").innerText = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)    
+}
 
 
-                            /* agrega lo elegido a comprar en el array carrito */
-            carrito.push(new carritos(1, i.nombrecomida, i.precio * suma, i.descripcion, i.img, i.gustos , suma))
-                /* guarda el array como json */
-                
-                const carritoJSON = JSON.stringify(carrito)
-                localStorage.setItem("carritoJSON" , carritoJSON)
-                actualizarcarritonavbar()
-                
-
-        }
-
+function recuperar() {
+    let recuperarLS = JSON.parse(localStorage.getItem("carrito")); // si no existe, devuele null
+    console.log("entre en recuperer")
+    if (recuperarLS) {
+        console.log(recuperarLS)
+        recuperarLS.forEach((el) => {
+            cargarcarrito(el);
+            console.log("soy el EL de recuperar",el)
+            carrito.push(el);
+            actualizarCarrito();
+        });
     }
-    salirCompra()
 }
 
-const loadcarrito = document.getElementsByClassName("loadcarrito")
-
-for(let i =0 ; i<loadcarrito.length; i++){
-    loadcarrito[i].addEventListener("click", e => {
-    cargarcarrito()
-})
-}
-
-actualizarcarritonavbar()
-
-
-function cargarcarrito() {
-
-    
-
-        
-        const prodJSON = localStorage.getItem("carritoJSON")
-        const prodJSONobject = JSON.parse(prodJSON)
-
-        let total = 0
-        
-        for (const i of prodJSONobject) {
-            
-            
-            const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
-            
-                let prod = document.createElement("div")
-                prod.classList.add('producto_carrito')
-                
-                prod.innerHTML = `
-                                        
-                            <div class="producto_borrar">
-                                <a href="javascript:void(0)" onclick="sacarProducto()">
-                                    <i class="fa-solid fa-xmark agarrar"></i>
-                                </a>
-                            </div>
-                            <div class="carrito_img">
-                                <img src="${i.img}" alt="">
-                            </div>
-                            <div class="carrito-pedido-gustos-precio">
-                                <div class="carrito-pedidogusto">
-    
-                                    <p><b> ${i.cantidad +" "+ i.nombrecomida}</b></p>
-                                    <p class="gustos">gustos (Ej: albaca, oregano etc)</p> 
-                                </div>
-                                <div class="carrito_precio">
-    
-                                    <p>$${i.precio*suma}</p>
-                                </div>
-                            </div>
-                                        
-                                `
-                                total += i.precio*suma 
-                                prdcrrito.appendChild(prod)
-                                document.getElementById("carritoTotal").innerHTML = "Total: <span style='color:rgb(7, 167, 7)'>$" + total + "</span>"
-                                
-
-            
-        }
-}
-
-function actualizarcarritonavbar(){
-
-    const prodJSON = localStorage.getItem("carritoJSON")
-    const prodJSONobject = JSON.parse(prodJSON)
-
-    document.getElementById("carrito-items").innerHTML =prodJSONobject.length
-}
-
-/* borrar el carrito cada vez que sale, para evitar que se buge */
-
-const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
-
-const salircarrito = document.getElementById("salircarrito")
-salircarrito.addEventListener("click", e =>{
-    prdcrrito.innerHTML = ""
-})
-
-
-const xs = document.getElementsByClassName('agarrar')
-function sacarProducto() {
-
-
-
-    for(let i =0 ; i<xs.length; i++){
-        xs[i].addEventListener("click", e => {
-            e.currentTarget.parentNode.parentNode.parentNode.remove()
-    })
-    }
-
-
-    /* return this.parentNode.remove()
-    /* return this.parentNode.remove(); */ 
-    
-}
+recuperar();

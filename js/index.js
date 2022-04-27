@@ -70,8 +70,8 @@ function mostrarProductos(array) {
 
 
 
-const variProductos = document.getElementsByClassName("producto")
-
+ const variProductos = document.getElementsByClassName("producto")
+/*
 for (const is of variProductos) {
         is.addEventListener("click", e =>{
             abrirCompra()
@@ -100,9 +100,9 @@ for (const is of variProductos) {
             }
         })
 }
+ */
 
-
-/* for (const i of variProductos) {
+for (const i of variProductos) {
     i.addEventListener("click", e => {
         const ClickComida = i.getElementsByClassName("nombrecomidas")[0].innerHTML
         abrirCompra()
@@ -118,7 +118,7 @@ for (const is of variProductos) {
                 document.getElementById("detalleprod").innerHTML = i.descripcion
 
                 
-                /*  Que hace? Agregar 
+                /* /*  Que hace? Agregar  */
                 btnagregar.addEventListener("click", () => {
                     agregarCarrito(i.id)
     
@@ -133,7 +133,7 @@ for (const is of variProductos) {
         
 
     })
-} */
+}
 
 /* agregar el producto clickeado al carrito */
 function agregarCarrito(id) {

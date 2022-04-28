@@ -32,6 +32,7 @@ body{
     display: flex;
     align-items: center;
     text-decoration: none;
+    cursor: pointer;
 }
 .navbar-carrito{
     flex-grow: 1;
@@ -135,6 +136,7 @@ margin: 0 1rem;
 }
 .x i,.hamburger{
     color: white;
+    cursor: pointer;
 }
 .x i:hover, .hamburger:hover{
     color:black
@@ -156,8 +158,8 @@ margin: 0 1rem;
 
 .menutitulo p{
     text-transform: uppercase;
-
-
+    text-align: center;
+    font-weight: bold;
 }
 
 .productos-wrap{
@@ -184,6 +186,7 @@ margin: 0 1rem;
     gap: 5rem;
     border-top: 1px solid gray;
     padding: 1rem 0.5rem;
+    cursor: pointer;
  
 }
 .producto:hover{
@@ -216,6 +219,7 @@ margin: 0 1rem;
 .carritologo{
     display: flex;
     gap: 1rem;
+    cursor: pointer;
 }
 .pedidoslogo{
     display: flex;

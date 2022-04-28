@@ -45,3 +45,49 @@ function abrircarrito() {
     document.getElementById("body").style.overflow = "hidden"
     document.getElementById("header-sidebar").style.left = "-250px"
 }
+
+/* click de los menús */
+
+const cS = document.getElementById("cerrarSidebar")
+const aC = document.getElementById("abrirCarrito")
+const aC2 = document.getElementById("abrirCarrito2")
+const pA = document.getElementById("pedidosAnteriores")
+const Fa = document.getElementById("favoritos")
+const mC = document.getElementById("miCuenta")
+const nos = document.getElementById("nosotros")
+const abSid = document.getElementById("abrirSidebar")
+const saC = document.getElementById("SacarSecCarrito")
+const salC = document.getElementById("salirCompra")
+
+
+cS.onclick = () =>{
+    cerrarSidebar()
+}
+aC.onclick = () =>{
+    abrircarrito()
+}
+aC2.onclick = () =>{
+    abrircarrito()
+}
+pA.onclick = ()=>{
+    /* PedidosAnteriores(no hecho todavia) */
+}
+Fa.onclick = () =>{
+    /* favoritos(no hecho todavia) */
+}
+mC.onclick = () =>{
+    /* Mi cuenta (todavia no hecho) */
+}
+nos.onclick = () =>{
+    /* nosotros (todavia no hecho) */
+}
+saC.onclick = () =>{
+    SacarSecCarrito()
+}
+salC.onclick = () =>{
+    salirCompra()
+}
+
+abSid.onclick = () =>{
+    abrirSidebar()
+}

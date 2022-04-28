@@ -32,7 +32,7 @@
                                         <p>RequetePizza</p>
                                     </div>
                                     <div class="x">
-                                        <a href="javascript:void(0)" onclick="cerrarSidebar()">
+                                        <a id="cerrarSidebar" >
                                             <i class="fa-solid fa-xmark"></i>
                                         </a>
                                     </div>
@@ -48,7 +48,7 @@
 
                                 <div class="sidebar-links">
                                     <div class="carrito sidebar-items-flex">
-                                        <a class="loadcarrito" href="javascript:void(0)" onclick="abrircarrito()">
+                                        <a class="loadcarrito" id="abrirCarrito2">
                                             <div class="carritologo">
 
                                                 <i class="fa-solid fa-cart-shopping"></i>
@@ -59,7 +59,7 @@
                                         </a>
                                     </div><!-- Continuar -->
                                     <div class="pedidosAnteriores sidebar-items-flex">
-                                        <a href="javascript:void(0)" onclick="pedidosAnteriores()">
+                                        <a id="pedidosAnteriores">
                                             <div class="pedidoslogo">
                                                 <i class="fa-solid fa-utensils"></i>
 
@@ -69,7 +69,7 @@
                                     </div>
                                     <!-- Continuar -->
                                     <div class="favoritos sidebar-items-flex">
-                                        <a href="javascript:void(0)" onclick="favoritos()">
+                                        <a id="favoritos">
                                             <div class="favoritoslogo">
                                                 <i class="fa-solid fa-heart"></i>
 
@@ -79,7 +79,7 @@
                                     </div>
                                 </div><!-- Continuar -->
                                 <div class="miCuenta sidebar-items-flex">
-                                    <a href="javascript:void(0)" onclick="miCuenta()">
+                                    <a id="miCuenta">
                                         <div class="cuentalogo">
                                             <i class="fa-solid fa-user"></i>
 
@@ -89,7 +89,7 @@
                                 </div>
                                 <!-- Continuar -->
                                 <div class="sobreNosotros sidebar-items-flex">
-                                    <a href="javascript:void(0)" onclick="nosotros()">
+                                    <a id="nosotros">
                                         <div class="nosotroslogo">
                                             <i class="fa-solid fa-circle-info"></i>
 
@@ -102,7 +102,7 @@
                     </div>
                 </div><!-- Continuar -->
 
-                <a class="hamburger" href="javascript:void(0)" onclick="abrirSidebar()">
+                <a class="hamburger" id="abrirSidebar">
 
                     <i class="fa-solid fa-bars"></i>
                 </a>
@@ -112,7 +112,7 @@
 
                 </div>
                 <div class="navbar-carrito">
-                    <a class="loadcarrito" href="javascript:void(0)" onclick="abrircarrito()">
+                    <a class="loadcarrito" id="abrirCarrito">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <p id="carrito-items">0</p>
                     </a>
@@ -155,8 +155,8 @@
             <div class="navbar-wrap top">
                 <div class="navbar-menulogo">
 
-                    <div class="navbar-menu">
-                        <a id="salircarrito"  class="hamburger" href="javascript:void(0)" onclick="SacarSecCarrito()">
+                    <div class="navbar-menu" id="SacarSecCarrito">
+                        <a id="salircarrito "  class="hamburger" >
 
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
@@ -237,7 +237,7 @@
                 <div class="navbar-menulogo">
 
                     <div class="navbar-menu">
-                        <a class="hamburger" href="javascript:void(0)" onclick="salirCompra()">
+                        <a class="hamburger" id="salirCompra">
 
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>

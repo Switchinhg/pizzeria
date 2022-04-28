@@ -11,7 +11,7 @@ class productos {
 
 
 let carrito = [ /* comidas a pedir */ ]
-let pedidosAnteriores = [ /* Pedidos viejos */]
+let pedidosAnteriores = [ /* Pedidos viejos */ ]
 
 let padre = document.getElementsByClassName("productos")[0]
 const btnagregar = document.getElementById("btnagregar")
@@ -27,10 +27,10 @@ mostrarProductos(comidas);
 function mostrarProductos(array) {
     padre.innerHTML = "";
     array.forEach(comida => {
-        
-                let prod = document.createElement("div")
-                prod.classList.add('producto')
-                prod.innerHTML += `
+
+        let prod = document.createElement("div")
+        prod.classList.add('producto')
+        prod.innerHTML += `
                                         
                                         <div class="prodImg">
                                             <img src="${comida.img}" alt="">
@@ -44,15 +44,15 @@ function mostrarProductos(array) {
                                         </div>
                                         
                                 `
-        
-                padre.appendChild(prod)
+
+        padre.appendChild(prod)
 
 
 
-            prod.addEventListener("click",()=>{
-                abrirCompra(comida.id)
+        prod.addEventListener("click", () => {
+            abrirCompra(comida.id)
 
-            })
+        })
     });
 }
 
@@ -67,7 +67,7 @@ btnagregar.addEventListener("click", () => {
     suma = 1
     salirCompra()
 
-}) 
+})
 
 const btnmas = document.getElementsByClassName("botonchico")[1]
 const btnmenos = document.getElementsByClassName("botonchico")[0]
@@ -86,23 +86,18 @@ btnmenos.onclick = () => {
 }
 
 /* agregar el producto clickeado al carrito */
-function agregarCarrito(id,num) {
+function agregarCarrito(id, num) {
     let esta = carrito.find((item) => item.id == id)
-    console.log("este es el id en agregar carrit"+ id)
-    if (esta) { // se va al else con -> false, null, undefind y " "
-        if(num != 1){
-            esta.cantidad =+  num
-        } else{
-            esta.cantidad++
-        }
-
+    console.log("este es el id en agregar carrit" + id)
+    if (esta) {
+        esta.cantidad = +num
         document.getElementById(`prod${esta.id}`).innerHTML = ` <p id="prod${esta.id}"><b> ${esta.cantidad +" "+ esta.comida}</b></p>`
 
     } else {
         let prod = comidas.find((elemento) => elemento.id == id)
-        if(num != 1){
-            prod.cantidad =  num
-        } else{
+        if (num != 1) {
+            prod.cantidad = num
+        } else {
             prod.cantidad = 1 //le agrego una propiedad "cantidad"
         }
         console.log("entre en else")
@@ -115,7 +110,7 @@ function agregarCarrito(id,num) {
 
 function cargarcarrito(prod) {
     const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
-    
+
     let produ = document.createElement("div")
     produ.classList.add('producto_carrito')
     let suma = 1
@@ -145,16 +140,19 @@ function cargarcarrito(prod) {
     prdcrrito.appendChild(produ)
 }
 
+
+
+
 function actualizarCarrito() {
-     //actualiza la cantidad de productos que hay en el carrito
-    contadorCarrito.innerText = carrito.reduce((acc, el) => carrito.length,0);
+    //actualiza la cantidad de productos que hay en el carrito
+    contadorCarrito.innerText = carrito.reduce((acc, el) => carrito.length, 0);
     //actualiza el precio
-    document.getElementById("precioTotal").innerText = carrito.reduce((acc, el) => acc + el.precio * el.cantidad,0)    
+    document.getElementById("precioTotal").innerText = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0)
 }
 
 
 function recuperar() {
-    let recuperarLS = JSON.parse(localStorage.getItem("carrito")) || []// si no existe, devuele null
+    let recuperarLS = JSON.parse(localStorage.getItem("carrito")) || [] // si no existe, devuele null
     if (recuperarLS) {
         console.log(recuperarLS)
         recuperarLS.forEach((el) => {

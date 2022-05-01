@@ -1,3 +1,4 @@
+let DateTime = luxon.DateTime;
 class productos {
     constructor(id, nombrecomida, precio, descripcion, img) {
         this.id = id,
@@ -10,6 +11,7 @@ class productos {
 }
 
 
+/* Etiquetas HTML traidas */
 let carrito = [ /* comidas a pedir */ ]
 let pedidosAnteriores = [ /* Pedidos viejos */ ]
 
@@ -17,6 +19,8 @@ let padre = document.getElementsByClassName("productos")[0]
 const btnagregar = document.getElementById("btnagregar")
 let contadorCarrito = document.getElementById("carrito-items")
 let carritoTotal = document.getElementById("carritoTotal")
+let btnCompra = document.getElementById("btnCompra")
+const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 
 
 
@@ -56,6 +60,7 @@ function mostrarProductos(array) {
     });
 }
 
+/* Al hacer Click agrega el producto al carrito y sale notificacion de producto agregado */
 let suma = 1
 btnagregar.addEventListener("click", () => {
     let prod = JSON.parse(localStorage.getItem("producto"))
@@ -66,6 +71,16 @@ btnagregar.addEventListener("click", () => {
     document.getElementById("cantidadcompra").innerHTML = 1
     suma = 1
     salirCompra()
+    Toastify({
+        text: "Producto agregado al carrito!",
+        duration: 3000,
+        gravity: "bottom",
+        position: "center",
+        style: {
+            background: "linear-gradient(90deg, rgba(168,42,0,1) 0%, rgba(222,93,19,1) 100%)",
+        },
+    }).showToast();
+
 
 })
 
@@ -73,7 +88,7 @@ const btnmas = document.getElementsByClassName("botonchico")[1]
 const btnmenos = document.getElementsByClassName("botonchico")[0]
 const cantidadcompra = document.getElementById("cantidadcompra")
 
-
+/* Sube o baja la cantidad de productos a pedir */
 btnmas.onclick = () => {
     suma++
     cantidadcompra.innerHTML = suma
@@ -108,6 +123,7 @@ function agregarCarrito(id, num) {
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
+/* Carga el producto al carrito */
 function cargarcarrito(prod) {
     const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 
@@ -140,7 +156,44 @@ function cargarcarrito(prod) {
     prdcrrito.appendChild(produ)
 }
 
+/* Borrar de carrito */
 
+/* Boton de compra, borra el carrito y lo guarda en un array para pedidos anteriores con la fecha de compra */
+btnCompra.onclick = () => {
+    if (carrito != "") {
+        let pedido = JSON.parse(localStorage.getItem("carrito")) 
+        pedido.forEach(element => {
+            element.fecha = DateTime.now().toLocaleString(DateTime.DATE_MED)
+        });
+        let pedidosAnteriores =  JSON.parse(localStorage.getItem("pedidosAnteriores")) 
+        let pedido2 = pedido.concat(pedidosAnteriores) 
+        localStorage.setItem("pedidosAnteriores", JSON.stringify(pedido2))
+        carrito = []
+        localStorage.setItem("carrito", JSON.stringify(carrito));
+        SacarSecCarrito()
+        actualizarCarrito()
+        prdcrrito.innerHTML = ""
+        Swal.fire({
+            icon: 'success',
+            title: 'Pedido Realizado!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'No hay productos en el carrito!',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+}
+
+function relizarPedido(array) {
+
+
+
+}
 
 
 function actualizarCarrito() {

@@ -10,9 +10,9 @@ class productos {
     /* Tengo pensado hacer que el "dueño" de la app pueda agregar comidas a gusto */
 }
 
-
 /* Etiquetas HTML traidas */
 let carrito = [ /* comidas a pedir */ ]
+
 let pedidosAnteriores = [ /* Pedidos viejos */ ]
 
 let padre = document.getElementsByClassName("productos")[0]
@@ -21,9 +21,6 @@ let contadorCarrito = document.getElementById("carrito-items")
 let carritoTotal = document.getElementById("carritoTotal")
 let btnCompra = document.getElementById("btnCompra")
 const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
-
-
-
 
 /* Agrega los productos  */
 mostrarProductos(comidas);
@@ -80,8 +77,6 @@ btnagregar.addEventListener("click", () => {
             background: "linear-gradient(90deg, rgba(168,42,0,1) 0%, rgba(222,93,19,1) 100%)",
         },
     }).showToast();
-
-
 })
 
 const btnmas = document.getElementsByClassName("botonchico")[1]
@@ -118,55 +113,71 @@ function agregarCarrito(id, num) {
         console.log("entre en else")
         carrito.push(prod) // lo guardo en mi array
 
-        cargarcarrito(prod)
+        mostrarCarrito(prod)
     }
     localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-/* Carga el producto al carrito */
-function cargarcarrito(prod) {
-    const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 
+/* muestra el producto en el carrito y lo elimina si se apreta la cruz o disminuye la cantidad en 1 */
+function mostrarCarrito(item) {
     let produ = document.createElement("div")
-    produ.classList.add('producto_carrito')
+    produ.className = "producto_carrito"
+    
     let suma = 1
     let total = 0
-    produ.innerHTML = `
-                        <div class="producto_borrar">
-                            <a href="javascript:void(0)" onclick="sacarProducto()">
-                                <i class="fa-solid fa-xmark agarrar"></i>
-                            </a>
-                        </div>
-                        <div class="carrito_img">
-                            <img src="${prod.img}" alt="">
-                        </div>
-                        <div class="carrito-pedido-gustos-precio">
-                            <div class="carrito-pedidogusto">
+    produ.innerHTML = 
+    `
+            <div class="producto_borrar" id="eliminar${item.id}">
+                <i class="fa-solid fa-xmark agarrar"></i>
+            </div>
 
-                                <p id="prod${prod.id}"><b> ${prod.cantidad +" "+ prod.comida}</b></p>
-                                <p class="gustos">gustos (Ej: albaca, oregano etc)</p> 
-                            </div>
-                            <div class="carrito_precio">
+            <div class="carrito_img">
+                <img src="${item.img}" alt="">
+            </div>
 
-                                <p>$${prod.precio*suma}</p>
-                            </div>
-                        </div>
-                            `
-    total += prod.precio * suma
+            <div class="carrito-pedido-gustos-precio">
+            <div class="carrito-pedidogusto">
+
+                <p id="prod${item.id}"><b> ${item.cantidad +" "+ item.comida}</b></p>
+                
+            </div>
+            <div class="carrito_precio">
+
+                <p>$${item.precio*suma}</p>
+                </div>
+            </div>
+            `
+    total += item.precio * suma
     prdcrrito.appendChild(produ)
+
+    let elim = document.getElementById(`eliminar${item.id}`)
+    elim.addEventListener("click", ()=>{
+        if(item.cantidad ==1){
+            elim.parentElement.remove()
+            carrito = carrito.filter((i)=> i.id != item.id)
+            actualizarCarrito()
+            localStorage.setItem("carrito", JSON.stringify(carrito))
+        }else{
+            item.cantidad --
+            document.getElementById(`prod${item.id}`).innerHTML = `<p id="prod${item.id}"><b> ${item.cantidad +" "+ item.comida}</b></p>`
+            actualizarCarrito()
+            localStorage.setItem("carrito", JSON.stringify(carrito))
+        }
+    })
+
 }
 
-/* Borrar de carrito */
 
 /* Boton de compra, borra el carrito y lo guarda en un array para pedidos anteriores con la fecha de compra */
 btnCompra.onclick = () => {
     if (carrito != "") {
-        let pedido = JSON.parse(localStorage.getItem("carrito")) 
+        let pedido = JSON.parse(localStorage.getItem("carrito"))
         pedido.forEach(element => {
             element.fecha = DateTime.now().toLocaleString(DateTime.DATE_MED)
         });
-        let pedidosAnteriores =  JSON.parse(localStorage.getItem("pedidosAnteriores")) 
-        let pedido2 = pedido.concat(pedidosAnteriores) 
+        let pedidosAnteriores = JSON.parse(localStorage.getItem("pedidosAnteriores"))
+        let pedido2 = pedido.concat(pedidosAnteriores)
         localStorage.setItem("pedidosAnteriores", JSON.stringify(pedido2))
         carrito = []
         localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -190,11 +201,8 @@ btnCompra.onclick = () => {
 }
 
 function relizarPedido(array) {
-
-
-
+    /* Continuar */
 }
-
 
 function actualizarCarrito() {
     //actualiza la cantidad de productos que hay en el carrito
@@ -203,13 +211,12 @@ function actualizarCarrito() {
     document.getElementById("precioTotal").innerText = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0)
 }
 
-
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem("carrito")) || [] // si no existe, devuele null
     if (recuperarLS) {
         console.log(recuperarLS)
         recuperarLS.forEach((el) => {
-            cargarcarrito(el);
+            mostrarCarrito(el);
             carrito.push(el);
             actualizarCarrito();
         });

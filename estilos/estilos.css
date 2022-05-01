@@ -282,6 +282,7 @@ margin: 0 1rem;
 }
 .producto_borrar i:hover{
     color: tomato;
+    cursor: pointer;
 }
 
 .carrito_img{

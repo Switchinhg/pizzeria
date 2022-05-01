@@ -22,7 +22,7 @@ function salirCompra(){
     document.getElementsByClassName("pedido-wrap")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
     document.getElementById("imgproducto").src= "./img/placeholder.png"
-
+    
 
 }
 function abrirSidebar() {
@@ -37,6 +37,7 @@ function cerrarSidebar() {
 function SacarSecCarrito() {
     document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
+    
 }
 
 function abrircarrito() {

@@ -84,16 +84,8 @@ const btnmenos = document.getElementsByClassName("botonchico")[0]
 const cantidadcompra = document.getElementById("cantidadcompra")
 
 /* Sube o baja la cantidad de productos a pedir */
-btnmas.onclick = () => {
-    suma++
-    cantidadcompra.innerHTML = suma
-}
-btnmenos.onclick = () => {
-    if (suma != 1) {
-        suma--
-        cantidadcompra.innerHTML = suma
-    }
-}
+btnmas.onclick = () => {suma++ , cantidadcompra.innerHTML = suma}
+btnmenos.onclick = () => {if (suma != 1) suma-- , cantidadcompra.innerHTML = suma}
 
 /* agregar el producto clickeado al carrito */
 function agregarCarrito(id, num) {
@@ -102,14 +94,9 @@ function agregarCarrito(id, num) {
     if (esta) {
         esta.cantidad = +num
         document.getElementById(`prod${esta.id}`).innerHTML = ` <p id="prod${esta.id}"><b> ${esta.cantidad +" "+ esta.comida}</b></p>`
-
     } else {
         let prod = comidas.find((elemento) => elemento.id == id)
-        if (num != 1) {
-            prod.cantidad = num
-        } else {
-            prod.cantidad = 1 //le agrego una propiedad "cantidad"
-        }
+        num != 1? prod.cantidad = num : prod.cantidad = 1 //le agrego una propiedad "cantidad"
         console.log("entre en else")
         carrito.push(prod) // lo guardo en mi array
 

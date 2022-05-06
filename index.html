@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="top">
 
 <head>
     <meta charset="UTF-8">
@@ -58,7 +58,7 @@
                                         </a>
                                     </div><!-- Continuar -->
                                     <div class="pedidosAnteriores sidebar-items-flex">
-                                        <a id="pedidosAnteriores">
+                                        <a id="pedidosAnteriores" href="#top" >
                                             <div class="pedidoslogo">
                                                 <i class="fa-solid fa-utensils"></i>
 
@@ -155,7 +155,7 @@
                 <div class="navbar-menulogo">
 
                     <div class="navbar-menu" id="SacarSecCarrito">
-                        <a id="salircarrito "  class="hamburger" >
+                        <a id="salircarrito "  class="hamburger2" >
 
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
@@ -236,7 +236,7 @@
                 <div class="navbar-menulogo">
 
                     <div class="navbar-menu">
-                        <a class="hamburger" id="salirCompra">
+                        <a class="hamburger2" id="salirCompra">
 
                             <i class="fa-solid fa-arrow-left"></i>
                         </a>
@@ -266,6 +266,43 @@
         <div class="botoncomprar botoncomprarchico">
             <button id="btnagregar" class="boton ">Agregar</button>
         </div>
+    </section>
+
+    <section class="prodAnteriores">
+        <div class="navbar-wrap top">
+            <div class="navbar-menulogo">
+
+                <div class="navbar-menu">
+                    <a class="hamburger2" id="salirProdsAnteriores">
+
+                        <i class="fa-solid fa-arrow-left"></i>
+                    </a>
+                </div>
+                <div class="navbar-logo">
+                    <h1 id="productoname">Pedidos Antreriores</h1>
+                </div>
+            </div>
+        </div>
+        <div class="pedidosAntWrap">
+
+            <div class="pAnteriores">
+                <div class="pedido">
+                    <div class="prodImg">
+                        <img src="./img/muzzarella.png" alt="">
+                    </div>
+                    <div class="infoyFecha">
+                        <p id="asd">Muzzarella</p>
+                        <p>Fecha Pedido</p>
+                    </div>
+                    <div class="precio">
+                        <p>$170</p>
+                        <button class="boton2" id="btnrepetirpedido">Repetir Pedido</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"

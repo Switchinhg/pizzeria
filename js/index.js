@@ -17,17 +17,21 @@ let pedidosAnteriores = [ /* Pedidos viejos */ ]
 
 let padre = document.getElementsByClassName("productos")[0]
 const btnagregar = document.getElementById("btnagregar")
+const btnrepetirpedido = document.getElementById("btnrepetirpedido")
 let contadorCarrito = document.getElementById("carrito-items")
 let carritoTotal = document.getElementById("carritoTotal")
 let btnCompra = document.getElementById("btnCompra")
 const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 
 /* Agrega los productos  */
-mostrarProductos(comidas);
 
-function mostrarProductos(array) {
+
+const  mostrarProductos = async () => {
+    const resp = await fetch('/JSON/pizzeria.json')
+    const data = await resp.json()
+
     padre.innerHTML = "";
-    array.forEach(comida => {
+    data.forEach(comida => {
 
         let prod = document.createElement("div")
         prod.classList.add('producto')
@@ -56,6 +60,7 @@ function mostrarProductos(array) {
         })
     });
 }
+mostrarProductos();
 
 /* Al hacer Click agrega el producto al carrito y sale notificacion de producto agregado */
 let suma = 1
@@ -177,6 +182,7 @@ btnCompra.onclick = () => {
             showConfirmButton: false,
             timer: 1500
         })
+        actualizarPedidosAnteriores(pedido2)
     } else {
         Swal.fire({
             icon: 'error',
@@ -186,10 +192,49 @@ btnCompra.onclick = () => {
         })
     }
 }
+const aasd = document.querySelector(".pAnteriores")
+let pedidospasados = JSON.parse(localStorage.getItem("pedidosAnteriores"))
+actualizarPedidosAnteriores(pedidospasados)
+/* Al hacer click en realizar pedido lo agrega a pedidos anteriores */
 
-function relizarPedido(array) {
-    /* Continuar */
+function actualizarPedidosAnteriores(array){
+    aasd.innerHTML = ""
+    array.forEach(e => {
+        let prod = document.createElement("div")
+        prod.classList.add('pedido')
+        prod.innerHTML +=`
+                    <div class="prodImg">
+                        <img src="${e.imgg}" alt="">
+                    </div>
+                    <div class="infoyFecha">
+                        <p id="asd">${e.comida +" <br> Cantidad: "+ e.cantidad} </p>
+                        <p>Pedido el: ${e.fecha}</p>
+                    </div>
+                    <div class="precio">
+                        <p>$ ${e.precio*e.cantidad}</p>
+                        <button class="boton2" id="btnrepetirpedido${e.id}">Repetir Pedido</button>
+                    </div>      
+        `
+
+        aasd.appendChild(prod)
+
+        btnrepetirpedido.addEventListener("click", () =>{
+            agregarCarrito(e.id, e.cantidad)
+            actualizarCarrito()
+        Toastify({
+            text: "Producto agregado al carrito!",
+            duration: 3000,
+            gravity: "bottom",
+            position: "center",
+            style: {
+                background: "linear-gradient(90deg, rgba(168,42,0,1) 0%, rgba(222,93,19,1) 100%)",
+            },
+        }).showToast();
+            })
+    });
 }
+
+
 
 function actualizarCarrito() {
     //actualiza la cantidad de productos que hay en el carrito

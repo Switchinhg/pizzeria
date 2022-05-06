@@ -19,7 +19,7 @@ body{
 }
 
 .navbar-wrap{
-    padding: 0.5rem;
+    padding:  0.5rem;
     display: flex;
     gap: 0.6rem;
     background-color: rgb(215, 70, 53);
@@ -141,7 +141,16 @@ margin: 0 1rem;
 .x i:hover, .hamburger:hover{
     color:black
 }
-
+.hamburger2 {
+    margin-left: 0.5rem;
+}
+.x i,.hamburger2{
+    color: white;
+    cursor: pointer;
+}
+.x i:hover, .hamburger2:hover{
+    color:black
+}
 
 
 .carousel-item-next, .carousel-item-prev, .carousel-item.active{
@@ -401,4 +410,66 @@ font-size: 0.8rem;
 #precioTotal{
     color: rgb(7, 167, 7);
     font-size: 1.5rem;
+}
+
+
+#pedidosAnteriores :hover{
+    cursor: pointer;
+    color: black;
+}
+.prodAnteriores{
+    z-index: 100;
+    width:99vw;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    display: none;
+    background-color: white;
+    
+}
+.pedido:hover{
+        background-color: rgb(235, 235, 235);
+}
+.infoyFecha{
+    flex-grow: 1;
+}
+.boton2{
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    background-color: rgb(215, 70, 53);
+    color: white;
+    outline: none;
+    box-shadow: none;
+    border: solid 1px gray;
+    box-shadow: 1px 1px 2px black;
+}
+
+    
+.boton2:active{
+    outline: none;
+    border: solid 1px black;
+    box-shadow: 0 0 2px black;
+}
+.pAnteriores{
+    margin-top:5rem;
+    padding-bottom: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height: 99vh;
+    overflow-y: auto;
+}
+.pedido{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    gap: 5rem;
+    width: 1000px;
+    background-color: white;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    border: solid 1px gray;
+    padding: 1.5rem;
+    margin-top: 1rem ;
 }

@@ -47,6 +47,18 @@ function abrircarrito() {
     document.getElementById("header-sidebar").style.left = "-250px"
 }
 
+function abrirPedidosAnteriores(){
+
+    document.getElementsByClassName("prodAnteriores")[0].style.display = "flex"
+    document.getElementById("body").style.overflow = "hidden"
+    document.getElementById("header-sidebar").style.left = "-250px"
+    /* Abrir menu de Pedidos Anteriores */
+}
+function cerrarPedidosAnteriores(){
+    document.getElementsByClassName("prodAnteriores")[0].style.display = "none"
+    document.getElementById("body").style.overflow = "auto"
+}
+
 /* click de los menús */
 
 const cS = document.getElementById("cerrarSidebar")
@@ -59,7 +71,7 @@ const nos = document.getElementById("nosotros")
 const abSid = document.getElementById("abrirSidebar")
 const saC = document.getElementById("SacarSecCarrito")
 const salC = document.getElementById("salirCompra")
-
+const spa = document.getElementById("salirProdsAnteriores")
 
 cS.onclick = () =>{
     cerrarSidebar()
@@ -92,3 +104,12 @@ salC.onclick = () =>{
 abSid.onclick = () =>{
     abrirSidebar()
 }
+
+pA.onclick = ( ) =>{
+    abrirPedidosAnteriores()
+
+}
+spa.onclick = () =>{
+    cerrarPedidosAnteriores()
+}
+

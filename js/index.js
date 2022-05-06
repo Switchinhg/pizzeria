@@ -27,7 +27,7 @@ const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 
 
 const  mostrarProductos = async () => {
-    const resp = await fetch('../JSON/pizzeria.json')
+    const resp = await fetch('./JSON/pizzeria.json')
     const data = await resp.json()
 
     padre.innerHTML = "";

@@ -1,7 +1,6 @@
 function abrirCompra(id){
 
     let prod = comidas.find((elemento) => elemento.id == id)
-    console.log(prod)
     document.getElementById("productoname").innerHTML = prod.comida
     document.getElementById("imgproducto").src = `${prod.imgg}`
     document.getElementById("nombreProducto").innerHTML = prod.comida

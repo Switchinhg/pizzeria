@@ -27,11 +27,11 @@ const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 
 
 const  mostrarProductos = async () => {
-    const resp = await fetch('./JSON/pizzeria.json')
-    const data = await resp.json()
+    const respuesta = await fetch('./JSON/pizzeria.json')
+    const info = await respuesta.json()
 
     padre.innerHTML = "";
-    data.forEach(comida => {
+    info.forEach(comida => {
 
         let prod = document.createElement("div")
         prod.classList.add('producto')
@@ -67,7 +67,6 @@ let suma = 1
 btnagregar.addEventListener("click", () => {
     let prod = JSON.parse(localStorage.getItem("producto"))
     const cantcompra2 = document.getElementById("cantidadcompra").innerHTML
-    console.log(cantcompra2)
     agregarCarrito(prod.id, cantcompra2)
     actualizarCarrito()
     document.getElementById("cantidadcompra").innerHTML = 1
@@ -95,14 +94,12 @@ btnmenos.onclick = () => {if (suma != 1) suma-- , cantidadcompra.innerHTML = sum
 /* agregar el producto clickeado al carrito */
 function agregarCarrito(id, num) {
     let esta = carrito.find((item) => item.id == id)
-    console.log("este es el id en agregar carrit" + id)
     if (esta) {
         esta.cantidad = +num
         document.getElementById(`prod${esta.id}`).innerHTML = ` <p id="prod${esta.id}"><b> ${esta.cantidad +" "+ esta.comida}</b></p>`
     } else {
         let prod = comidas.find((elemento) => elemento.id == id)
         num != 1? prod.cantidad = num : prod.cantidad = 1 //le agrego una propiedad "cantidad"
-        console.log("entre en else")
         carrito.push(prod) // lo guardo en mi array
 
         mostrarCarrito(prod)
@@ -164,15 +161,25 @@ function mostrarCarrito(item) {
 /* Boton de compra, borra el carrito y lo guarda en un array para pedidos anteriores con la fecha de compra */
 btnCompra.onclick = () => {
     if (carrito != "") {
-        let pedido = JSON.parse(localStorage.getItem("carrito"))
-        pedido.forEach(element => {
-            element.fecha = DateTime.now().toLocaleString(DateTime.DATE_MED)
+        carrito.forEach(element => {
+            element.fecha = DateTime.now().toLocaleString(DateTime.DATETIME_MED)
         });
         let pedidosAnteriores = JSON.parse(localStorage.getItem("pedidosAnteriores"))
-        let pedido2 = pedido.concat(pedidosAnteriores)
-        localStorage.setItem("pedidosAnteriores", JSON.stringify(pedido2))
+
+        if(pedidosAnteriores){
+            let pedido = carrito.concat(pedidosAnteriores)
+            localStorage.setItem("pedidosAnteriores", JSON.stringify(pedido))
+            actualizarPedidosAnteriores(pedido)
+        }else{
+            localStorage.setItem("pedidosAnteriores", JSON.stringify(carrito))
+            actualizarPedidosAnteriores(carrito)
+        }
+    
+
+
         carrito = []
         localStorage.setItem("carrito", JSON.stringify(carrito));
+
         SacarSecCarrito()
         actualizarCarrito()
         prdcrrito.innerHTML = ""
@@ -182,7 +189,7 @@ btnCompra.onclick = () => {
             showConfirmButton: false,
             timer: 1500
         })
-        actualizarPedidosAnteriores(pedido2)
+        
     } else {
         Swal.fire({
             icon: 'error',
@@ -194,32 +201,38 @@ btnCompra.onclick = () => {
 }
 const aasd = document.querySelector(".pAnteriores")
 let pedidospasados = JSON.parse(localStorage.getItem("pedidosAnteriores"))
+
 actualizarPedidosAnteriores(pedidospasados)
 /* Al hacer click en realizar pedido lo agrega a pedidos anteriores */
 
+
 function actualizarPedidosAnteriores(array){
     aasd.innerHTML = ""
-    array.forEach(e => {
+    let num = 1
+    array.forEach(i => {
+        
         let prod = document.createElement("div")
         prod.classList.add('pedido')
         prod.innerHTML +=`
                     <div class="prodImg">
-                        <img src="${e.imgg}" alt="">
+                        <img src="${i.img}" alt="">
                     </div>
                     <div class="infoyFecha">
-                        <p id="asd">${e.comida +" <br> Cantidad: "+ e.cantidad} </p>
-                        <p>Pedido el: ${e.fecha}</p>
+                        <p id="asd">${i.comida +" <br> Cantidad: "+ i.cantidad} </p>
+                        <p>Pedido el: ${i.fecha}</p>
                     </div>
                     <div class="precio">
-                        <p>$ ${e.precio*e.cantidad}</p>
-                        <button class="boton2" id="btnrepetirpedido${e.id}">Repetir Pedido</button>
+                        <p>$ ${i.precio*i.cantidad}</p>
+                        <button class="boton2" id="btnrepetirpedido${num}">Agregar a Carrito</button>
                     </div>      
         `
 
         aasd.appendChild(prod)
-
-        btnrepetirpedido.addEventListener("click", () =>{
-            agregarCarrito(e.id, e.cantidad)
+        let asd = document.getElementById(`btnrepetirpedido${num}`)
+        
+/* btnmenos.onclick = () => {if (suma != 1) suma-- , cantidadcompra.innerHTML = suma} */
+        asd.onclick = () =>{
+            agregarCarrito(i.id, i.cantidad)
             actualizarCarrito()
         Toastify({
             text: "Producto agregado al carrito!",
@@ -230,8 +243,11 @@ function actualizarPedidosAnteriores(array){
                 background: "linear-gradient(90deg, rgba(168,42,0,1) 0%, rgba(222,93,19,1) 100%)",
             },
         }).showToast();
-            })
-    });
+            }
+        num++
+        })
+    
+        
 }
 
 
@@ -246,7 +262,6 @@ function actualizarCarrito() {
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem("carrito")) || [] // si no existe, devuele null
     if (recuperarLS) {
-        console.log(recuperarLS)
         recuperarLS.forEach((el) => {
             mostrarCarrito(el);
             carrito.push(el);

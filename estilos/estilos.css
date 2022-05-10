@@ -568,7 +568,7 @@ header {
 
     .pedido {
         width: auto;
-        height: auto;
+        height: 230px;
         gap: 1rem;
         margin: 1rem;
     }
@@ -590,8 +590,9 @@ header {
 
     .pedido {
         width: auto;
-        height: auto;
+        height: 230px;
         gap: 1rem;
+        -webkit-gap:1rem;
         margin: 1rem;
     }
     .boton{

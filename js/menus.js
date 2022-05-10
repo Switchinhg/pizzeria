@@ -9,12 +9,9 @@ function abrirCompra(id){
 
     localStorage.setItem("producto", JSON.stringify(prod))
 
-    document.getElementsByClassName("pedido-wrap")[0].style.display = "flex"
     document.getElementById("body").style.overflow = "hidden"
+    document.getElementsByClassName("pedido-wrap")[0].style.display = "flex"
     document.getElementById("header-sidebar").style.left = "-250px"
-
-
-
 }
 
 function salirCompra(){

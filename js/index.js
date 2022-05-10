@@ -209,6 +209,7 @@ actualizarPedidosAnteriores(pedidospasados)
 function actualizarPedidosAnteriores(array){
     aasd.innerHTML = ""
     let num = 1
+    if(array){
     array.forEach(i => {
         
         let prod = document.createElement("div")
@@ -230,7 +231,6 @@ function actualizarPedidosAnteriores(array){
         aasd.appendChild(prod)
         let asd = document.getElementById(`btnrepetirpedido${num}`)
         
-/* btnmenos.onclick = () => {if (suma != 1) suma-- , cantidadcompra.innerHTML = suma} */
         asd.onclick = () =>{
             agregarCarrito(i.id, i.cantidad)
             actualizarCarrito()
@@ -246,7 +246,7 @@ function actualizarPedidosAnteriores(array){
             }
         num++
         })
-    
+    }
         
 }
 

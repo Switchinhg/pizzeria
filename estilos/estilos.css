@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Roboto:wght@100;300;400&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-header{
+header {
     background-color: rgb(215, 70, 53);
     position: fixed;
     top: 0;
@@ -14,12 +15,12 @@ header{
     z-index: 5;
 }
 
-body{
+body {
     padding-top: 64px;
 }
 
-.navbar-wrap{
-    padding:  0.5rem;
+.navbar-wrap {
+    padding: 0.5rem;
     display: flex;
     gap: 0.6rem;
     background-color: rgb(215, 70, 53);
@@ -28,26 +29,31 @@ body{
     color: white;
 
 }
-.loadcarrito{
+
+.loadcarrito {
     display: flex;
     align-items: center;
     text-decoration: none;
     cursor: pointer;
 }
-.navbar-carrito{
+
+.navbar-carrito {
     flex-grow: 1;
     display: flex;
     justify-content: flex-end;
     padding-right: 1rem;
 }
-.navbar-carrito i{
+
+.navbar-carrito i {
     color: white;
 }
-.navbar-carrito i:hover{
-    color:black
+
+.navbar-carrito i:hover {
+    color: black
 }
-.navbar-carrito p{
-    color:white;
+
+.navbar-carrito p {
+    color: white;
     background-color: #e4b142;
     width: 25px;
     height: 20px;
@@ -56,26 +62,27 @@ body{
     padding-left: 15%;
     padding-bottom: 22px;
     border-radius: 50%;
-    
+
 }
 
-.navbar-wrap i{
+.navbar-wrap i {
     font-size: 1.5rem;
 }
-.navbar-menulogo{
+
+.navbar-menulogo {
     display: flex;
     align-items: center;
     gap: 1rem;
 
-    
+
 }
 
-.navbar-logo h1{
+.navbar-logo h1 {
     font-size: 2rem;
     font-weight: bold;
 }
 
-.header-navbar-content{
+.header-navbar-content {
     height: 100%;
     position: fixed;
     top: 0;
@@ -84,111 +91,131 @@ body{
     background-color: rgb(215, 70, 53);
     overflow: hidden;
     left: -250px;
-    width: 250px; /*para despues ponerle la animacion*/  
-    transition: 0.5s;/* para despues ponerle la animacion */
-}
-header{
-    transition: 0.5s; /* para despues */
+    width: 250px;
+    /*para despues ponerle la animacion*/
+    transition: 0.5s;
+    /* para despues ponerle la animacion */
 }
 
-.requete-wrap{
+header {
+    transition: 0.5s;
+    /* para despues */
+}
+
+.requete-wrap {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.imgrequete{
+
+.imgrequete {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
+
 }
-.imgrequete:hover{
+
+.imgrequete:hover {
     filter: opacity(0.7);
 }
-.sidebar-texto{
+
+.sidebar-texto {
     padding-top: 1rem;
     font-size: 1.3rem;
     font-weight: bold;
 }
-.sidebar-img img{
+
+.sidebar-img img {
     border-radius: 50%;
     width: 8rem;
 }
 
-.sidebar-links{
+.sidebar-links {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.sidebar-items-flex{
+
+.sidebar-items-flex {
     display: flex;
     gap: 1rem;
     margin-left: 1rem;
 }
 
-.tituloyX{
+.tituloyX {
     display: flex;
-align-items: center;
-justify-content: space-between;
-margin: 0 1rem;    
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 1rem;
 
 }
-.x i,.hamburger{
+
+.x i,
+.hamburger {
     color: white;
     cursor: pointer;
 }
-.x i:hover, .hamburger:hover{
-    color:black
+
+.x i:hover,
+.hamburger:hover {
+    color: black
 }
+
 .hamburger2 {
     margin-left: 0.5rem;
 }
-.x i,.hamburger2{
+
+.x i,
+.hamburger2 {
     color: white;
     cursor: pointer;
 }
-.x i:hover, .hamburger2:hover{
-    color:black
+
+.x i:hover,
+.hamburger2:hover {
+    color: black
 }
 
 
-.carousel-item-next, .carousel-item-prev, .carousel-item.active{
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
     display: flex !important;
 }
 
 
-.ci{
+.ci {
     height: 375px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.menutitulo p{
+.menutitulo p {
     text-transform: uppercase;
     text-align: center;
     font-weight: bold;
 }
 
-.productos-wrap{
+.productos-wrap {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center;
-    margin: 0 15rem;
 }
 
-.productos{
+.productos {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-content: center;
+    width: 90%;
     max-width: 1000px;
-    margin :0 auto;
+    margin: 0 auto;
 }
 
-.producto{
+.producto {
     display: flex;
     justify-content: space-evenly;
     align-content: center;
@@ -196,63 +223,77 @@ margin: 0 1rem;
     border-top: 1px solid gray;
     padding: 1rem 0.5rem;
     cursor: pointer;
- 
+
 }
-.producto:hover{
+
+.producto:hover {
     background-color: rgb(235, 235, 235);
 }
-.producto .info{
+
+.producto .info {
     flex-grow: 1;
     min-width: 205px;
 
 }
 
-.sec_sidebarCarrito{
+.info p {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sec_sidebarCarrito {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
     max-width: 100%;
     background-color: #f8f8f8;
-    position:fixed;
+    position: fixed;
     top: 0;
     z-index: 5;
-    display:none;
-    
+    display: none;
+
 }
 
-.carritologo{
+.carritologo {
     display: flex;
     gap: 1rem;
     cursor: pointer;
 }
-.pedidoslogo{
-    display: flex;
-    gap: 1rem;
-}
-.favoritoslogo{
-    display: flex;
-    gap: 1rem;
-}
-.cuentalogo{
-    display: flex;
-    gap: 1rem;
-}
-.nosotroslogo{
+
+.pedidoslogo {
     display: flex;
     gap: 1rem;
 }
 
-.requete-wrap a{
+.favoritoslogo {
+    display: flex;
+    gap: 1rem;
+}
+
+.cuentalogo {
+    display: flex;
+    gap: 1rem;
+}
+
+.nosotroslogo {
+    display: flex;
+    gap: 1rem;
+}
+
+.requete-wrap a {
     color: white;
     text-decoration: none;
 }
-.requete-wrap a:hover{
+
+.requete-wrap a:hover {
     color: black;
     text-decoration: none;
 }
 
-.sec_carrito{
+.sec_carrito {
     margin-top: 5rem;
     padding-bottom: 2rem;
     display: flex;
@@ -260,95 +301,110 @@ margin: 0 1rem;
     align-items: center;
     overflow: scroll;
     overflow-x: hidden;
-    height: calc( 100vh - 130px );
+    height: calc(100vh - 130px);
 }
-.top{
+
+.top {
     position: absolute !important;
     top: 0;
     width: 100%;
 }
 
-.producto_carrito{
+.producto_carrito {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 1000px;
+    max-width: 1000px;
+    width: 90%;
     background-color: white;
     padding: 1rem;
     margin-top: 1rem;
     box-shadow: 0 1px 2px gray;
 }
+
 .producto_borrar {
     width: 50px;
     height: 50px;
     font-size: 2rem;
     display: grid;
     place-items: center;
-    
+
 }
-.producto_borrar i{
+
+.producto_borrar i {
     color: black;
 }
-.producto_borrar i:hover{
+
+.producto_borrar i:hover {
     color: tomato;
     cursor: pointer;
 }
 
-.carrito_img{
+.carrito_img {
     flex-grow: 1;
 }
-.carrito-pedido-gustos-precio{
+
+.carrito-pedido-gustos-precio {
     display: flex;
     flex-direction: column;
 }
-.carrito-pedidogusto,.carrito_precio{
+
+.carrito-pedidogusto,
+.carrito_precio {
     text-align: end;
 }
-.carrito-pedidogusto{
+
+.carrito-pedidogusto {
     line-height: 5px;
 }
-.gustos{
-font-size: 0.8rem;
+
+.gustos {
+    font-size: 0.8rem;
 }
 
-.botoncomprar{
+.botoncomprar {
     display: flex;
     gap: 1rem;
     justify-content: center;
     align-items: center;
     height: 40px;
 }
-.botoncomprar p{
+
+.botoncomprar p {
     font-size: 1.5rem;
 }
-.boton{
-    padding: 0.5rem 20rem;
+
+.boton {
+    padding: 0.5rem ;
+    width: 100%;
+    max-width: 600px;
     border-radius: 10px;
-    box-shadow: 1px  5px #999;
+    box-shadow: 1px 5px #999;
     background-color: rgb(215, 70, 53);
     color: white;
     outline: none;
     order: none;
 }
-.boton:active{
+
+.boton:active {
     box-shadow: 0 2px #666;
     transform: translateY(4px);
     outline: none;
     border: none;
 }
 
-.pedido-wrap{
+.pedido-wrap {
     display: none;
     flex-direction: column;
     height: 100vh;
     width: 100vw;
     background-color: #f8f8f8;
-    position:fixed;
+    position: fixed;
     top: 0;
     z-index: 5;
 }
 
-.productoinfo{
+.productoinfo {
     padding: 5rem;
     flex-grow: 1;
     display: flex;
@@ -356,84 +412,99 @@ font-size: 0.8rem;
     justify-content: flex-start;
     align-items: center;
     width: 500px;
-    margin: 0 auto; 
+    margin: 0 auto;
     gap: 2rem;
 }
-.botonesCuantos{
+
+.botonesCuantos {
     display: flex;
     padding: 1rem;
-    gap: 2rem;  
+    gap: 2rem;
 }
-.botonesCuantos p{
+
+.botonesCuantos p {
     position: relative;
     top: 10px;
 }
-.infoproducto{
+
+.infoproducto {
     display: flex;
     flex-direction: column;
 }
-.nombreprodyprecio{
-    display:flex;
+
+.nombreprodyprecio {
+    display: flex;
     gap: 30rem;
 }
-#nombreProducto{
+
+#nombreProducto {
     width: 200px;
     font-weight: bold;
 }
-#precioProducto{
+
+#precioProducto {
     color: rgb(7, 167, 7);
     font-size: 1.5rem;
 }
-#imgproducto{
+
+#imgproducto {
     width: 300px;
 }
-.botonchico{
+
+.botonchico {
     padding: 0.5rem 1rem;
     border-radius: 50%;
     background-color: rgb(215, 70, 53);
     color: white;
     outline: none;
     order: none;
-    
+
 }
-.botoncomprarchico{
+
+.botoncomprarchico {
     height: 56px;
 }
-.botonchico:active{
+
+.botonchico:active {
     background-color: white;
     color: black;
 }
 
-.carrito_precio p{
+.carrito_precio p {
     color: tomato;
 }
-#precioTotal{
+
+#precioTotal {
     color: rgb(7, 167, 7);
     font-size: 1.5rem;
 }
 
 
-#pedidosAnteriores :hover{
+#pedidosAnteriores :hover {
     cursor: pointer;
     color: black;
 }
-.prodAnteriores{
+
+.prodAnteriores {
     z-index: 100;
-    width:99vw;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top: 0;
     display: none;
     background-color: white;
-    
+
 }
-.pedido:hover{
-        background-color: rgb(235, 235, 235);
+
+.pedido:hover {
+    background-color: rgb(235, 235, 235);
 }
-.infoyFecha{
+
+.infoyFecha {
     flex-grow: 1;
 }
-.boton2{
+
+.boton2 {
     padding: 0.5rem 1rem;
     border-radius: 10px;
     background-color: rgb(215, 70, 53);
@@ -444,32 +515,75 @@ font-size: 0.8rem;
     box-shadow: 1px 1px 2px black;
 }
 
-    
-.boton2:active{
+
+.boton2:active {
     outline: none;
     border: solid 1px black;
     box-shadow: 0 0 2px black;
 }
-.pAnteriores{
-    margin-top:5rem;
+
+.pAnteriores {
+    margin-top: 5rem;
     padding-bottom: 5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100vw;
-    height: 99vh;
+    height: 100vh;
     overflow-y: auto;
 }
-.pedido{
+
+.pedido {
     display: flex;
     justify-content: space-evenly;
     align-content: center;
     gap: 5rem;
-    width: 1000px;
+    max-width: 1000px;
+    width: 90%;
     background-color: white;
     padding: 1rem 0.5rem;
     cursor: pointer;
     border: solid 1px gray;
     padding: 1.5rem;
-    margin-top: 1rem ;
+    margin-top: 1rem;
+}
+
+@media only screen and (max-width: 500px) {
+    .producto {
+        gap: 1rem;
+    }
+    .nombreprodyprecio {
+        gap: 0;
+    }
+    .productoinfo{
+        padding: 5rem 1rem;
+        width: auto;
+    }
+
+    b{
+        line-height: 1rem;
+    }
+    .pedido{
+        width: auto;
+        gap: 1rem;
+        margin: 1rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .producto {
+        gap: 1rem;
+    }
+    .nombreprodyprecio {
+        gap: 0;
+    }
+    .productoinfo{
+        padding: 5rem 1rem;
+        width: auto;
+    }
+    .pedido{
+        width: auto;
+        gap: 1rem;
+        margin: 1rem;
+    }
 }

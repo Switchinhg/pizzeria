@@ -12,12 +12,16 @@ function abrirCompra(id){
     document.getElementById("body").style.overflow = "hidden"
     document.getElementsByClassName("pedido-wrap")[0].style.display = "flex"
     document.getElementById("header-sidebar").style.left = "-250px"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "none"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
 
 function salirCompra(){
     document.getElementsByClassName("pedido-wrap")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
     document.getElementById("imgproducto").src= "./img/placeholder.png"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
     
 
 }
@@ -33,6 +37,8 @@ function cerrarSidebar() {
 function SacarSecCarrito() {
     document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
     
 }
 
@@ -41,6 +47,9 @@ function abrircarrito() {
     document.getElementsByClassName("sec_sidebarCarrito")[0].style.display = "block"
     document.getElementById("body").style.overflow = "hidden"
     document.getElementById("header-sidebar").style.left = "-250px"
+
+    document.getElementsByClassName("productos-wrap")[0].style.display = "none"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
 
 function abrirPedidosAnteriores(){
@@ -48,11 +57,14 @@ function abrirPedidosAnteriores(){
     document.getElementsByClassName("prodAnteriores")[0].style.display = "flex"
     document.getElementById("body").style.overflow = "hidden"
     document.getElementById("header-sidebar").style.left = "-250px"
-    /* Abrir menu de Pedidos Anteriores */
+    document.getElementsByClassName("productos-wrap")[0].style.display = "none"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
 function cerrarPedidosAnteriores(){
     document.getElementsByClassName("prodAnteriores")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
 }
 
 /* click de los menús */

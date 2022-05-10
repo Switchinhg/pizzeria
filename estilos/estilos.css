@@ -303,7 +303,9 @@ header {
     overflow-x: hidden;
     height: calc(100vh - 130px);
 }
-
+b {
+    line-height: 1rem;
+}
 .top {
     position: absolute !important;
     top: 0;
@@ -548,33 +550,8 @@ header {
     margin-top: 1rem;
 }
 
-@media only screen and (max-width: 500px) {
-    .producto {
-        gap: 1rem;
-    }
 
-    .nombreprodyprecio {
-        gap: 0;
-    }
-
-    .productoinfo {
-        padding: 5rem 1rem;
-        width: auto;
-    }
-
-    b {
-        line-height: 1rem;
-    }
-
-    .pedido {
-        width: auto;
-        height: 230px;
-        gap: 1rem;
-        margin: 1rem;
-    }
-}
-
-@media only screen and (max-width: 767px) {
+@media only screen and  (max-width: 767px) {
     .producto {
         gap: 1rem;
     }
@@ -590,17 +567,19 @@ header {
 
     .pedido {
         width: auto;
-        height: 230px;
+        padding: 1rem;
         gap: 1rem;
-        -webkit-gap:1rem;
         margin: 1rem;
-    }
+    }    
     .boton{
         margin-bottom: 9rem;
-    }
+    }    
     #carritoTotal{
         margin-bottom: 9rem;
         background-color: white;
         padding: 0 1rem;
-    }
+    }    
+   
+
+
 }

@@ -375,7 +375,7 @@ header {
 }
 
 .boton {
-    padding: 0.5rem ;
+    padding: 0.5rem;
     width: 100%;
     max-width: 600px;
     border-radius: 10px;
@@ -552,18 +552,21 @@ header {
     .producto {
         gap: 1rem;
     }
+
     .nombreprodyprecio {
         gap: 0;
     }
-    .productoinfo{
+
+    .productoinfo {
         padding: 5rem 1rem;
         width: auto;
     }
 
-    b{
+    b {
         line-height: 1rem;
     }
-    .pedido{
+
+    .pedido {
         width: auto;
         gap: 1rem;
         margin: 1rem;
@@ -574,16 +577,43 @@ header {
     .producto {
         gap: 1rem;
     }
+
     .nombreprodyprecio {
         gap: 0;
     }
-    .productoinfo{
+
+    .productoinfo {
         padding: 5rem 1rem;
         width: auto;
     }
-    .pedido{
+
+    .pedido {
         width: auto;
         gap: 1rem;
         margin: 1rem;
     }
+    .boton{
+        margin-bottom: 7rem;
+    }
+    #carritoTotal{
+        margin-bottom: 7rem;
+        background-color: white;
+        padding: 0 1rem;
+    }
 }
+
+
+
+/* 
+.boton {
+    padding: 0.5rem;
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 1px 5px #999;
+    background-color: rgb(215, 70, 53);
+    color: white;
+    outline: none;
+    order: none;
+}
+*/

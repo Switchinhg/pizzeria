@@ -1,4 +1,4 @@
-function abrirCompra(id){
+function abrirCompra(id) {
 
     let prod = comidas.find((elemento) => elemento.id == id)
     document.getElementById("productoname").innerHTML = prod.comida
@@ -16,15 +16,16 @@ function abrirCompra(id){
     document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
 
-function salirCompra(){
+function salirCompra() {
     document.getElementsByClassName("pedido-wrap")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
-    document.getElementById("imgproducto").src= "./img/placeholder.png"
+    document.getElementById("imgproducto").src = "./img/placeholder.png"
     document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
     document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
-    
+
 
 }
+
 function abrirSidebar() {
     document.getElementById("header-sidebar").style.left = "0"
 
@@ -39,7 +40,7 @@ function SacarSecCarrito() {
     document.getElementById("body").style.overflow = "auto"
     document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
     document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
-    
+
 }
 
 function abrircarrito() {
@@ -52,7 +53,7 @@ function abrircarrito() {
     document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
 
-function abrirPedidosAnteriores(){
+function abrirPedidosAnteriores() {
 
     document.getElementsByClassName("prodAnteriores")[0].style.display = "flex"
     document.getElementById("body").style.overflow = "hidden"
@@ -60,64 +61,91 @@ function abrirPedidosAnteriores(){
     document.getElementsByClassName("productos-wrap")[0].style.display = "none"
     document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
-function cerrarPedidosAnteriores(){
+
+function cerrarPedidosAnteriores() {
     document.getElementsByClassName("prodAnteriores")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
     document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
     document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
 }
 
+function AbrirMiCuenta() {
+    document.getElementsByClassName("miCuentaSec")[0].style.display = "block"
+    document.getElementById("body").style.overflow = "hidden"
+    document.getElementById("header-sidebar").style.left = "-250px"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "none"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
+}
+function CerrarMiCuenta(){
+    document.getElementsByClassName("miCuentaSec")[0].style.display = "none"
+    document.getElementById("body").style.overflow = "auto"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
+}
 /* click de los menús */
 
 const cS = document.getElementById("cerrarSidebar")
 const aC = document.getElementById("abrirCarrito")
 const aC2 = document.getElementById("abrirCarrito2")
 const pA = document.getElementById("pedidosAnteriores")
-const Fa = document.getElementById("favoritos")
 const mC = document.getElementById("miCuenta")
 const nos = document.getElementById("nosotros")
 const abSid = document.getElementById("abrirSidebar")
 const saC = document.getElementById("SacarSecCarrito")
 const salC = document.getElementById("salirCompra")
 const spa = document.getElementById("salirProdsAnteriores")
+const Cuenta = document.getElementById("miCuenta")
+const cCuenta  = document.getElementById("salirCuenta")
 
-cS.onclick = () =>{
+cS.onclick = () => {
     cerrarSidebar()
 }
-aC.onclick = () =>{
+aC.onclick = () => {
     abrircarrito()
 }
-aC2.onclick = () =>{
+aC2.onclick = () => {
     abrircarrito()
 }
-pA.onclick = ()=>{
-    /* PedidosAnteriores(no hecho todavia) */
-}
-Fa.onclick = () =>{
-    /* favoritos(no hecho todavia) */
-}
-mC.onclick = () =>{
-    /* Mi cuenta (todavia no hecho) */
-}
-nos.onclick = () =>{
+nos.onclick = () => {
     /* nosotros (todavia no hecho) */
 }
-saC.onclick = () =>{
+saC.onclick = () => {
     SacarSecCarrito()
 }
-salC.onclick = () =>{
+salC.onclick = () => {
     salirCompra()
 }
 
-abSid.onclick = () =>{
+abSid.onclick = () => {
     abrirSidebar()
 }
 
-pA.onclick = ( ) =>{
+pA.onclick = () => {
     abrirPedidosAnteriores()
 
 }
-spa.onclick = () =>{
+spa.onclick = () => {
     cerrarPedidosAnteriores()
 }
 
+Cuenta.onclick = () => {
+    AbrirMiCuenta()
+}
+cCuenta.onclick = () =>{
+    CerrarMiCuenta()
+}
+
+/* modal */
+let modal = document.getElementById("miModal")
+let btndir = document.getElementById("btndir")
+
+btndir.onclick = () => {
+    modal.classList.toggle("modall-active")
+}
+modal.onclick = () => {
+    modal.classList.toggle("modall-active")
+}
+let a = document.getElementsByClassName("modalContenido")[0]
+a.addEventListener("click", (e)=>{
+    e.stopPropagation()
+})

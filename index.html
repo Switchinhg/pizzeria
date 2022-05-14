@@ -332,7 +332,6 @@
                     <p id="emailCliente"><b>Email:</b> santifonlop@hotmail.com</p>
                     <p id="TelCliente"><b>Teléfono:</b> 094680478</p>
                 </div>
-                <button class="boton2">Borrar</button>
             </div>
  -->
             <!-- Cosa a borrar con el boton 'borrar' -->
@@ -344,20 +343,29 @@
         <div id="miModal" class="modall">
             <div class="modalContenido">
                 <div class="salirmodal">
-                    <p>Direccion</p>
-                    <i class="fa-solid fa-xmark"></i>
+                    <p>Dirección</p>
                 </div>
+                <form id="form">
                 <div class="inputs">
-                    <label for="direccion">Direccion:</label>
-                    <input type="text" name="direccion" id="direccion">
-                    <label for="apto">apto:</label>
-                    <input type="text" name="apto" id="apto">
-                    <label for="Email">Email:</label>
-                    <input type="text" name="Email" id="Email">
-                    <label for="Telefono">Teléfono:</label>
-                    <input type="text" name="Telefono" id="Telefono">
-                    
-                </div>
+
+                        <label  for="direccion">*Dirección:</label>
+                        <input type="text" name="direccion" id="direccion" required>
+                        
+                        <label for="apto">apto:</label>
+                        <input type="number" name="apto" min="0"  id="apto">
+                        
+                        <label for="Email">Email:</label>
+                        <input type="text" name="Email" id="Email">
+                        
+                        <label for="Telefono">*Teléfono:(9 Numeros)</label>
+                        <input type="tel" pattern="[0]{1}[9]{1}[0-9]{7}" placeholder="09..." name="Telefono" id="Telefono" required>
+                        
+                    </div>
+                    <div id="error"></div>
+                    <div class="botonsalir">
+                        <button type="submit" class="boton2" id="guardarInfoUsuario">Guardar dirección</button>
+                    </div>
+                </form>
             </div>
         </div>
 
@@ -370,6 +378,15 @@
     <script src="https://cdn.jsdelivr.net/npm/luxon@2.3.0/build/global/luxon.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("wq12a64ndL6lSXUB4");
+   })();
+</script>
+
     <script src="./js/comidas.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/menus.js"></script>

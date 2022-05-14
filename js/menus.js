@@ -76,7 +76,8 @@ function AbrirMiCuenta() {
     document.getElementsByClassName("productos-wrap")[0].style.display = "none"
     document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
 }
-function CerrarMiCuenta(){
+
+function CerrarMiCuenta() {
     document.getElementsByClassName("miCuentaSec")[0].style.display = "none"
     document.getElementById("body").style.overflow = "auto"
     document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
@@ -95,7 +96,10 @@ const saC = document.getElementById("SacarSecCarrito")
 const salC = document.getElementById("salirCompra")
 const spa = document.getElementById("salirProdsAnteriores")
 const Cuenta = document.getElementById("miCuenta")
-const cCuenta  = document.getElementById("salirCuenta")
+const cCuenta = document.getElementById("salirCuenta")
+const form = document.getElementById("form")
+/* Datos de usuario */
+
 
 cS.onclick = () => {
     cerrarSidebar()
@@ -131,7 +135,7 @@ spa.onclick = () => {
 Cuenta.onclick = () => {
     AbrirMiCuenta()
 }
-cCuenta.onclick = () =>{
+cCuenta.onclick = () => {
     CerrarMiCuenta()
 }
 
@@ -146,6 +150,39 @@ modal.onclick = () => {
     modal.classList.toggle("modall-active")
 }
 let a = document.getElementsByClassName("modalContenido")[0]
-a.addEventListener("click", (e)=>{
+a.addEventListener("click", (e) => {
     e.stopPropagation()
+})
+
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+    let usuario = JSON.parse(localStorage.getItem("cliente"))
+
+    cliente.direccion = document.getElementById("direccion").value
+    cliente.apto = document.getElementById("apto").value
+    cliente.email = document.getElementById("Email").value
+    cliente.telefono= document.getElementById("Telefono").value
+    cliente.nombre = usuario.nombre
+    console.log("usuario en event listener" + usuario.nombre)
+    localStorage.setItem("cliente", JSON.stringify(cliente));
+
+
+    agregarInfo(cliente)
+    
+    document.getElementById("direccion").value = ''
+    document.getElementById("apto").value = ''
+    document.getElementById("Email").value = ''
+    document.getElementById("Telefono").value = ''
+   
+
+    modal.classList.toggle("modall-active")
+    Swal.fire({
+        icon: 'success',
+        title: 'Dirección agregada!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+
+
 })

@@ -3,6 +3,7 @@ let DateTime = luxon.DateTime;
 
 let carrito = [ /* comidas a pedir */ ]
 let pedidosAnteriores = [ /* Pedidos viejos */ ]
+/* guardar el cliente en el local storage */
 let cliente = {
     nombre: "Usuario",
     direccion: "N/A",
@@ -10,6 +11,7 @@ let cliente = {
     email: "N/A",
     telefono: "N/A"
 }
+
 
 
 /* Etiquetas HTML traidas */
@@ -195,6 +197,14 @@ btnCompra.onclick = () => {
             timer: 1500
         })
 
+        let recuperarUsu = JSON.parse(localStorage.getItem("cliente")) 
+
+        let params = {
+            nombre: recuperarUsu.nombre,
+            dir: recuperarUsu.direccion,
+            };
+            emailjs.send( "service_civn85j","template_fu32the", params );
+
     } else {
         Swal.fire({
             icon: 'error',
@@ -278,12 +288,50 @@ Usuario.addEventListener("click", () => {
                         asd[i].innerText = value
                     }
                     cliente.nombre = value
-                    localStorage.setItem("cliente", JSON.stringify(cliente));
+                    let clent = JSON.parse(localStorage.getItem("cliente"))
+                    clent.nombre = value
+                    localStorage.setItem("cliente", JSON.stringify(clent));
                 }
             }
         })
     })()
 })
+
+
+function agregarInfo(algo) {
+
+
+
+    let direccion = document.getElementsByClassName("direccion")[0]
+    direccion.innerHTML = ""
+    let usdir = document.createElement("div")
+    usdir.classList.add('producto')
+    usdir.innerHTML = `
+                                    
+                        <div class="dataCliente">
+                            <div class="infocliente">
+                                <p id="dirCliente"><b>Dirección:</b> ${algo.direccion}</p>
+                                <p id="AptoCliente"><b>Apto:</b>  ${algo.apto}</p>
+                            </div>
+                            <div class="infocliente">
+                                <p id="emailCliente"><b>Email:</b> ${algo.email}</p>
+                                <p id="TelCliente"><b>Teléfono:</b> ${algo.telefono}</p>
+                            </div>
+                            <button id="btndir" class="boton">Agregar/cambiar </button>
+                        </div> 
+                        
+
+                                    
+                            `
+                            
+
+    direccion.appendChild(usdir)
+
+    
+
+
+}
+
 
 
 function actualizarCarrito() {
@@ -303,11 +351,21 @@ function recuperar() {
         });
     }
     let recuperarUsu = JSON.parse(localStorage.getItem("cliente")) || {}
-    if(recuperarUsu  && recuperarUsu.nombre != "Usuario" ){
+
+    if (recuperarUsu.nombre ) {
         let asd = document.getElementsByClassName("nombreUsuario")
         for (let i = 0; i < asd.length; i++) {
             asd[i].innerText = recuperarUsu.nombre
         }
+        console.log("entro aca we")
+        
+    } else {
+        localStorage.setItem("cliente", JSON.stringify(cliente));
+        console.log("asdadsa")
+
+    }
+    if(recuperarUsu.direccion){
+        agregarInfo(recuperarUsu)
     }
 }
 

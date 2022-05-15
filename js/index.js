@@ -165,50 +165,62 @@ function mostrarCarrito(item) {
 }
 
 
-/* Boton de compra, borra el carrito y lo guarda en un array para pedidos anteriores con la fecha de compra */
+/* Boton de compra, chequea que exista algun usuario,
+ luego borra el carrito y lo guarda en un array para pedidos anteriores con la fecha de compra */
 btnCompra.onclick = () => {
-    if (carrito != "") {
-        carrito.forEach(element => {
-            element.fecha = DateTime.now().toLocaleString(DateTime.DATETIME_MED)
-        });
-        let pedidosAnteriores = JSON.parse(localStorage.getItem("pedidosAnteriores"))
+    let usuarioCheck = JSON.parse(localStorage.getItem("cliente"))
+    if (usuarioCheck && usuarioCheck.direccion != "N/A") {
 
-        if (pedidosAnteriores) {
-            let pedido = carrito.concat(pedidosAnteriores)
-            localStorage.setItem("pedidosAnteriores", JSON.stringify(pedido))
-            actualizarPedidosAnteriores(pedido)
-        } else {
-            localStorage.setItem("pedidosAnteriores", JSON.stringify(carrito))
-            actualizarPedidosAnteriores(carrito)
-        }
+        if (carrito != "") {
+            carrito.forEach(element => {
+                element.fecha = DateTime.now().toLocaleString(DateTime.DATETIME_MED)
+            });
+            let pedidosAnteriores = JSON.parse(localStorage.getItem("pedidosAnteriores"))
+
+            if (pedidosAnteriores) {
+                let pedido = carrito.concat(pedidosAnteriores)
+                localStorage.setItem("pedidosAnteriores", JSON.stringify(pedido))
+                actualizarPedidosAnteriores(pedido)
+            } else {
+                localStorage.setItem("pedidosAnteriores", JSON.stringify(carrito))
+                actualizarPedidosAnteriores(carrito)
+            }
 
 
 
-        carrito = []
-        localStorage.setItem("carrito", JSON.stringify(carrito));
+            carrito = []
+            localStorage.setItem("carrito", JSON.stringify(carrito));
 
-        SacarSecCarrito()
-        actualizarCarrito()
-        prdcrrito.innerHTML = ""
-        Swal.fire({
-            icon: 'success',
-            title: 'Pedido Realizado!',
-            showConfirmButton: false,
-            timer: 1500
-        })
+            SacarSecCarrito()
+            actualizarCarrito()
+            prdcrrito.innerHTML = ""
+            Swal.fire({
+                icon: 'success',
+                title: 'Pedido Realizado!',
+                showConfirmButton: false,
+                timer: 1500
+            })
 
-        let recuperarUsu = JSON.parse(localStorage.getItem("cliente")) 
+            let recuperarUsu = JSON.parse(localStorage.getItem("cliente"))
 
-        let params = {
-            nombre: recuperarUsu.nombre,
-            dir: recuperarUsu.direccion,
+            let params = {
+                nombre: recuperarUsu.nombre,
+                dir: recuperarUsu.direccion,
             };
-            emailjs.send( "service_civn85j","template_fu32the", params );
+            emailjs.send("service_civn85j", "template_fu32the", params);
 
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'No hay productos en el carrito!',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
     } else {
         Swal.fire({
             icon: 'error',
-            title: 'No hay productos en el carrito!',
+            title: 'Proporciona tu dirección y teléfono para pedir comida!',
             showConfirmButton: false,
             timer: 1500
         })
@@ -269,9 +281,6 @@ function actualizarPedidosAnteriores(array) {
 /* Cambiar nombre de usuario */
 Usuario.addEventListener("click", () => {
     let asd = document.getElementsByClassName("nombreUsuario")
-
-
-
     let a = (async () => {
 
         const {
@@ -289,25 +298,29 @@ Usuario.addEventListener("click", () => {
                     }
                     cliente.nombre = value
                     let clent = JSON.parse(localStorage.getItem("cliente"))
-                    clent.nombre = value
-                    localStorage.setItem("cliente", JSON.stringify(clent));
+                    if (clent) {
+                        clent.nombre = value
+                        localStorage.setItem("cliente", JSON.stringify(clent))
+                    } else {
+                        clent = cliente
+                        clent.nombre = value
+                        localStorage.setItem("cliente", JSON.stringify(clent))
+                    }
+
                 }
+
             }
         })
     })()
 })
 
-
+/* Agrega la info del usuario cuando se sale del modal */
 function agregarInfo(algo) {
-
-
-
     let direccion = document.getElementsByClassName("direccion")[0]
     direccion.innerHTML = ""
     let usdir = document.createElement("div")
     usdir.classList.add('producto')
     usdir.innerHTML = `
-                                    
                         <div class="dataCliente">
                             <div class="infocliente">
                                 <p id="dirCliente"><b>Dirección:</b> ${algo.direccion}</p>
@@ -319,18 +332,42 @@ function agregarInfo(algo) {
                             </div>
                             <button id="btndir" class="boton">Agregar/cambiar </button>
                         </div> 
-                        
-
-                                    
                             `
-                            
-
     direccion.appendChild(usdir)
+}
 
+/* Cuando se presiona click en  guardar direccion se guardan los datos y se borra lo escrito en los 
+inputs */
+form.addEventListener("submit", (e) => {
+    let usuario = JSON.parse(localStorage.getItem("cliente"))
+
+    cliente.direccion = document.getElementById("direccion").value
+    cliente.apto = document.getElementById("apto").value
+    cliente.email = document.getElementById("Email").value
+    cliente.telefono = document.getElementById("Telefono").value
+    if (cliente.nombre && usuario) {
+        cliente.nombre = usuario.nombre
+    }
+    localStorage.setItem("cliente", JSON.stringify(cliente));
+
+
+    agregarInfo(cliente)
+
+    document.getElementById("direccion").value = ''
+    document.getElementById("apto").value = ''
+    document.getElementById("Email").value = ''
+    document.getElementById("Telefono").value = ''
+
+    modal.classList.toggle("modall-active")
+    Swal.fire({
+        icon: 'success',
+        title: 'Dirección agregada!',
+        showConfirmButton: false,
+        timer: 1500
+    })
     
 
-
-}
+})
 
 
 
@@ -352,21 +389,21 @@ function recuperar() {
     }
     let recuperarUsu = JSON.parse(localStorage.getItem("cliente")) || {}
 
-    if (recuperarUsu.nombre ) {
-        let asd = document.getElementsByClassName("nombreUsuario")
-        for (let i = 0; i < asd.length; i++) {
-            asd[i].innerText = recuperarUsu.nombre
+    if (recuperarUsu) {
+        if (recuperarUsu.nombre != "usuario" && recuperarUsu.nombre) {
+            let asd = document.getElementsByClassName("nombreUsuario")
+            for (let i = 0; i < asd.length; i++) {
+                asd[i].innerText = recuperarUsu.nombre
+            }
         }
-        console.log("entro aca we")
-        
-    } else {
-        localStorage.setItem("cliente", JSON.stringify(cliente));
-        console.log("asdadsa")
+        if (recuperarUsu.direccion != "N/A" && recuperarUsu.direccion) {
+            agregarInfo(recuperarUsu)
+        }
+        /* localStorage.setItem("cliente", JSON.stringify(cliente)); */
+    }
 
-    }
-    if(recuperarUsu.direccion){
-        agregarInfo(recuperarUsu)
-    }
+
+
 }
 
 recuperar();

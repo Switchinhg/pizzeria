@@ -153,36 +153,3 @@ let a = document.getElementsByClassName("modalContenido")[0]
 a.addEventListener("click", (e) => {
     e.stopPropagation()
 })
-
-
-form.addEventListener("submit", (e) => {
-    e.preventDefault()
-    let usuario = JSON.parse(localStorage.getItem("cliente"))
-
-    cliente.direccion = document.getElementById("direccion").value
-    cliente.apto = document.getElementById("apto").value
-    cliente.email = document.getElementById("Email").value
-    cliente.telefono= document.getElementById("Telefono").value
-    cliente.nombre = usuario.nombre
-    console.log("usuario en event listener" + usuario.nombre)
-    localStorage.setItem("cliente", JSON.stringify(cliente));
-
-
-    agregarInfo(cliente)
-    
-    document.getElementById("direccion").value = ''
-    document.getElementById("apto").value = ''
-    document.getElementById("Email").value = ''
-    document.getElementById("Telefono").value = ''
-   
-
-    modal.classList.toggle("modall-active")
-    Swal.fire({
-        icon: 'success',
-        title: 'Dirección agregada!',
-        showConfirmButton: false,
-        timer: 1500
-      })
-
-
-})

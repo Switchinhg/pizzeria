@@ -24,10 +24,13 @@ let carritoTotal = document.getElementById("carritoTotal")
 let btnCompra = document.getElementById("btnCompra")
 const prdcrrito = document.getElementsByClassName("sec_carrito")[0]
 const Usuario = document.getElementById("us2")
+/* Sumar o restar cantidad de producto a comprar */
+const btnmas = document.getElementsByClassName("botonchico")[1]
+const btnmenos = document.getElementsByClassName("botonchico")[0]
+const cantidadcompra = document.getElementById("cantidadcompra")
 
 
-/* Agrega los productos  */
-
+/* Muestra los productos  */
 
 const mostrarProductos = async () => {
     const respuesta = await fetch('./JSON/pizzeria.json')
@@ -63,7 +66,7 @@ const mostrarProductos = async () => {
         })
     });
 }
-mostrarProductos();
+mostrarProductos()
 
 /* Al hacer Click agrega el producto al carrito y sale notificacion de producto agregado */
 let suma = 1
@@ -83,12 +86,10 @@ btnagregar.addEventListener("click", () => {
         style: {
             background: "linear-gradient(90deg, rgba(168,42,0,1) 0%, rgba(222,93,19,1) 100%)",
         },
-    }).showToast();
+    }).showToast()
 })
 
-const btnmas = document.getElementsByClassName("botonchico")[1]
-const btnmenos = document.getElementsByClassName("botonchico")[0]
-const cantidadcompra = document.getElementById("cantidadcompra")
+
 
 /* Sube o baja la cantidad de productos a pedir */
 btnmas.onclick = () => {
@@ -111,7 +112,7 @@ function agregarCarrito(id, num) {
 
         mostrarCarrito(prod)
     }
-    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("carrito", JSON.stringify(carrito))
 }
 
 
@@ -119,7 +120,6 @@ function agregarCarrito(id, num) {
 function mostrarCarrito(item) {
     let produ = document.createElement("div")
     produ.className = "producto_carrito"
-
     let suma = 1
     let total = 0
     produ.innerHTML =
@@ -174,7 +174,7 @@ btnCompra.onclick = () => {
         if (carrito != "") {
             carrito.forEach(element => {
                 element.fecha = DateTime.now().toLocaleString(DateTime.DATETIME_MED)
-            });
+            })
             let pedidosAnteriores = JSON.parse(localStorage.getItem("pedidosAnteriores"))
 
             if (pedidosAnteriores) {
@@ -189,7 +189,7 @@ btnCompra.onclick = () => {
 
 
             carrito = []
-            localStorage.setItem("carrito", JSON.stringify(carrito));
+            localStorage.setItem("carrito", JSON.stringify(carrito))
 
             SacarSecCarrito()
             actualizarCarrito()
@@ -206,8 +206,8 @@ btnCompra.onclick = () => {
             let params = {
                 nombre: recuperarUsu.nombre,
                 dir: recuperarUsu.direccion,
-            };
-            emailjs.send("service_civn85j", "template_fu32the", params);
+            }
+            emailjs.send("service_civn85j", "template_fu32the", params)
 
         } else {
             Swal.fire({
@@ -226,7 +226,7 @@ btnCompra.onclick = () => {
         })
     }
 }
-const aasd = document.querySelector(".pAnteriores")
+const produAnteriores = document.querySelector(".pAnteriores")
 let pedidospasados = JSON.parse(localStorage.getItem("pedidosAnteriores"))
 
 actualizarPedidosAnteriores(pedidospasados)
@@ -234,7 +234,7 @@ actualizarPedidosAnteriores(pedidospasados)
 
 
 function actualizarPedidosAnteriores(array) {
-    aasd.innerHTML = ""
+    produAnteriores.innerHTML = ""
     let num = 1
     if (array) {
         array.forEach(i => {
@@ -255,10 +255,10 @@ function actualizarPedidosAnteriores(array) {
                     </div>      
         `
 
-            aasd.appendChild(prod)
-            let asd = document.getElementById(`btnrepetirpedido${num}`)
+            produAnteriores.appendChild(prod)
+            let btnspedido = document.getElementById(`btnrepetirpedido${num}`)
 
-            asd.onclick = () => {
+            btnspedido.onclick = () => {
                 agregarCarrito(i.id, i.cantidad)
                 actualizarCarrito()
                 Toastify({
@@ -269,7 +269,7 @@ function actualizarPedidosAnteriores(array) {
                     style: {
                         background: "linear-gradient(90deg, rgba(168,42,0,1) 0%, rgba(222,93,19,1) 100%)",
                     },
-                }).showToast();
+                }).showToast()
             }
             num++
         })
@@ -280,7 +280,7 @@ function actualizarPedidosAnteriores(array) {
 
 /* Cambiar nombre de usuario */
 Usuario.addEventListener("click", () => {
-    let asd = document.getElementsByClassName("nombreUsuario")
+    let usu = document.getElementsByClassName("nombreUsuario")
     let a = (async () => {
 
         const {
@@ -293,8 +293,8 @@ Usuario.addEventListener("click", () => {
                 if (!value) {
                     return 'Tienes que escribir algo!'
                 } else {
-                    for (let i = 0; i < asd.length; i++) {
-                        asd[i].innerText = value
+                    for (let i = 0; i < usu.length; i++) {
+                        usu[i].innerText = value
                     }
                     cliente.nombre = value
                     let clent = JSON.parse(localStorage.getItem("cliente"))
@@ -319,7 +319,6 @@ function agregarInfo(algo) {
     let direccion = document.getElementsByClassName("direccion")[0]
     direccion.innerHTML = ""
     let usdir = document.createElement("div")
-    usdir.classList.add('producto')
     usdir.innerHTML = `
                         <div class="dataCliente">
                             <div class="infocliente">
@@ -330,7 +329,6 @@ function agregarInfo(algo) {
                                 <p id="emailCliente"><b>Email:</b> ${algo.email}</p>
                                 <p id="TelCliente"><b>Teléfono:</b> ${algo.telefono}</p>
                             </div>
-                            <button id="btndir" class="boton">Agregar/cambiar </button>
                         </div> 
                             `
     direccion.appendChild(usdir)
@@ -339,6 +337,7 @@ function agregarInfo(algo) {
 /* Cuando se presiona click en  guardar direccion se guardan los datos y se borra lo escrito en los 
 inputs */
 form.addEventListener("submit", (e) => {
+    e.preventDefault()
     let usuario = JSON.parse(localStorage.getItem("cliente"))
 
     cliente.direccion = document.getElementById("direccion").value
@@ -348,7 +347,7 @@ form.addEventListener("submit", (e) => {
     if (cliente.nombre && usuario) {
         cliente.nombre = usuario.nombre
     }
-    localStorage.setItem("cliente", JSON.stringify(cliente));
+    localStorage.setItem("cliente", JSON.stringify(cliente))
 
 
     agregarInfo(cliente)
@@ -365,7 +364,7 @@ form.addEventListener("submit", (e) => {
         showConfirmButton: false,
         timer: 1500
     })
-    
+
 
 })
 
@@ -373,37 +372,37 @@ form.addEventListener("submit", (e) => {
 
 function actualizarCarrito() {
     //actualiza la cantidad de productos que hay en el carrito
-    contadorCarrito.innerText = carrito.reduce((acc, el) => carrito.length, 0);
+    contadorCarrito.innerText = carrito.reduce((acc, el) => carrito.length, 0)
     //actualiza el precio
     document.getElementById("precioTotal").innerText = carrito.reduce((acc, el) => acc + el.precio * el.cantidad, 0)
 }
 
+/* Recupera los elementos del carrito, y los datos del usuario */
 function recuperar() {
     let recuperarLS = JSON.parse(localStorage.getItem("carrito")) || [] // si no existe, devuele null
     if (recuperarLS) {
         recuperarLS.forEach((el) => {
-            mostrarCarrito(el);
-            carrito.push(el);
-            actualizarCarrito();
-        });
+            mostrarCarrito(el)
+            carrito.push(el)
+            actualizarCarrito()
+        })
     }
     let recuperarUsu = JSON.parse(localStorage.getItem("cliente")) || {}
 
     if (recuperarUsu) {
         if (recuperarUsu.nombre != "usuario" && recuperarUsu.nombre) {
-            let asd = document.getElementsByClassName("nombreUsuario")
-            for (let i = 0; i < asd.length; i++) {
-                asd[i].innerText = recuperarUsu.nombre
+            let usu = document.getElementsByClassName("nombreUsuario")
+            for (let i = 0; i < usu.length; i++) {
+                usu[i].innerText = recuperarUsu.nombre
             }
         }
         if (recuperarUsu.direccion != "N/A" && recuperarUsu.direccion) {
             agregarInfo(recuperarUsu)
         }
-        /* localStorage.setItem("cliente", JSON.stringify(cliente)); */
     }
 
 
 
 }
 
-recuperar();
+recuperar()

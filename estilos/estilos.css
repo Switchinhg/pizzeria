@@ -303,9 +303,11 @@ header {
     overflow-x: hidden;
     height: calc(100vh - 130px);
 }
+
 b {
     line-height: 1rem;
 }
+
 .top {
     position: absolute !important;
     top: 0;
@@ -532,7 +534,7 @@ b {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 
 .pedido {
@@ -550,7 +552,7 @@ b {
     margin-top: 1rem;
 }
 
-.miCuentaSec{
+.miCuentaSec {
     min-height: 100vh;
     width: 100vw;
     padding-top: 5rem;
@@ -562,7 +564,8 @@ b {
     z-index: 5;
 
 }
-.usuarioyImg{
+
+.usuarioyImg {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -573,11 +576,11 @@ b {
 
 
 
-.imgChica{
-    height:50px ;
+.imgChica {
+    height: 50px;
 }
 
-.direccion{
+.dirWrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -585,7 +588,8 @@ b {
     gap: 1rem;
     margin-top: 1rem;
 }
-.infocliente{
+
+.infocliente {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -593,29 +597,34 @@ b {
     margin: 0.3rem;
 
 }
-.dataCliente{
+
+.dataCliente {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     width: 500px;
-    border:  solid 1px black;
+    border: solid 1px black;
     padding: 1rem;
     border-radius: 10px;
-} 
+}
+
 .dataCliente p {
     width: auto;
     border-bottom: solid 1px gray;
 }
-.usuarioLapiz{
+
+.usuarioLapiz {
     display: flex;
     gap: 0.5rem;
 }
-.usuarioLapiz i{
+
+.usuarioLapiz i {
     position: relative;
     top: 0.3rem;
 }
+
 /* modal del usuario */
-.modall{
+.modall {
     display: none;
     position: fixed;
     z-index: 66;
@@ -626,12 +635,13 @@ b {
     justify-content: center;
     align-items: center;
 }
-.modall-active{
+
+.modall-active {
     display: flex;
 }
 
 
-.modalContenido{
+.modalContenido {
     background-color: rgb(215, 70, 53);
     height: 355px;
     width: 400px;
@@ -642,37 +652,116 @@ b {
     gap: 1rem;
 
 }
-.salirmodal{
+
+.salirmodal {
     display: flex;
     justify-content: space-between;
 }
-.salirmodal p{
+
+.salirmodal p {
     margin-bottom: 0;
     font-size: large;
     font-weight: bold;
 }
-.salirmodal i{
+
+.salirmodal i {
     font-size: 2rem;
 }
-.botonsalir{
+
+.botonsalir {
     display: flex;
     justify-content: center;
     margin-top: 1rem;
 }
-.inputs{
+
+.inputs {
     display: flex;
     flex-direction: column;
     gap: 0.1rem;
 }
+
+/* Sec Sobre Nosotros */
+.sobreNosWrapper {
+    height: 100vh;
+    width: 100vw;
+    padding-top: 4rem;
+    overflow: hidden;
+    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 5;
+}
+
+.subWrapper {
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.sobreNos {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 5rem;
+    gap: 1rem;
+}
+
+.Htitulo {
+
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid gray;
+}
+
+.dia {
+    border-bottom: solid 1px black;
+}
+
+.horarios {
+    width: 300px;
+    text-align: left;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+    gap: 1rem;
+}
+
+.horarios p {
+    margin-bottom: 0;
+}
+
+.contactoNos {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.links a {
+    border: solid #d74635 1px;
+    padding: 0.2rem 0.5rem;
+    background-color: white;
+    color: #d74635;
+}
+
+.links a:hover {
+    color: #d74535a1;
+    border: solid #d74535a1 1px;
+}
+
+.version {
+    margin-bottom: 5rem;
+}
+
 /* Media Queries */
 
 @media only screen and (max-width: 500px) {
     .pedido {
         min-height: 220px;
-    }    
+    }
 }
 
-@media only screen and  (max-width: 767px) {
+@media only screen and (max-width: 767px) {
     .producto {
         gap: 1rem;
     }
@@ -691,11 +780,13 @@ b {
         padding: 1rem;
         gap: 1rem;
         margin: 1rem;
-    }    
-    .boton{
+    }
+
+    .boton {
         margin-bottom: 9rem;
-    }    
-    #carritoTotal{
+    }
+
+    #carritoTotal {
         margin-bottom: 9rem;
         background-color: white;
         padding: 0 1rem;

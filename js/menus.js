@@ -83,6 +83,23 @@ function CerrarMiCuenta() {
     document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
     document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
 }
+
+function abrirSecNos() {
+    document.getElementsByClassName("sobreNosWrapper")[0].style.display = "block"
+    document.getElementById("body").style.overflow = "hidden"
+    document.getElementById("header-sidebar").style.left = "-250px"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "none"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "none"
+    document.getElementById("idk").style.display = "none"
+}
+
+function salirSecNos() {
+    document.getElementsByClassName("sobreNosWrapper")[0].style.display = "none"
+    document.getElementById("body").style.overflow = "auto"
+    document.getElementsByClassName("productos-wrap")[0].style.display = "flex"
+    document.getElementsByClassName("body-carousel-area")[0].style.display = "block"
+    document.getElementById("idk").style.display = "block"
+}
 /* click de los menús */
 
 const cS = document.getElementById("cerrarSidebar")
@@ -91,6 +108,7 @@ const aC2 = document.getElementById("abrirCarrito2")
 const pA = document.getElementById("pedidosAnteriores")
 const mC = document.getElementById("miCuenta")
 const nos = document.getElementById("nosotros")
+const salnos = document.getElementById("salirNos")
 const abSid = document.getElementById("abrirSidebar")
 const saC = document.getElementById("SacarSecCarrito")
 const salC = document.getElementById("salirCompra")
@@ -111,7 +129,10 @@ aC2.onclick = () => {
     abrircarrito()
 }
 nos.onclick = () => {
-    /* nosotros (todavia no hecho) */
+    abrirSecNos()
+}
+salnos.onclick = () => {
+    salirSecNos()
 }
 saC.onclick = () => {
     SacarSecCarrito()
